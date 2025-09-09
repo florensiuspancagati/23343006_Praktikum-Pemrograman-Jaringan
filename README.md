@@ -4,6 +4,7 @@
 
 <!-- ABOUT -->
 <hr>
+
 - 📫 How to reach me **florensiuspancagati@gmail.com**
 <!--
 Here are some ideas to get you started:
