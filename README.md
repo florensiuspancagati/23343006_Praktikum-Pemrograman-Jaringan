@@ -1,9 +1,8 @@
 # 23343006_Praktikum-Pemrograman-Jaringan
-<hr>
-<!-- ABOUT -->
 # Nama : Florensius Panca Gati
 # NIM  : 23343006
 
+<!-- ABOUT -->
 <hr>
 - 📫 How to reach me **florensiuspancagati@gmail.com**
 <!--
