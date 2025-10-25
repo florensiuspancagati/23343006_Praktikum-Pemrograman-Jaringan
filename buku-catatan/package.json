@@ -1,0 +1,19 @@
+{
+  "name": "buku-catatan",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "panca",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "validator": "^13.15.15",
+    "yargs": "^16.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
