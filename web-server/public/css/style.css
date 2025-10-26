@@ -10,18 +10,25 @@ body {
     min-height: 100vh;
 }
 
-.man-content {
+.main-content {
     flex-grow: 1;
 }
 
 footer {
-    color: #888888;
-    border-top: 1px solid #eeeeee;
-    margin-top: 16px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 16px 0;
+    text-align: center;
+    background-color: #8d8a8a;
+    color: #fff;
+    padding: 20px 0;
+    margin-top: 40px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.5px;
 }
+
+footer p {
+    margin: 5px 0;
+}
+
 
 header {
     margin-top: 16px;
@@ -41,4 +48,116 @@ header a {
 
 .portrait {
     width: 250px;
+}
+
+input {
+    border: 2px solid #cccccc;
+    padding: 8px;
+}
+
+button {
+    cursor: pointer;
+    border: 0px solid #cccccc;
+    background: #888888;
+    color: white;
+    padding: 9px;
+}
+
+/* batas */
+
+.about-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  margin: 40px auto;
+  max-width: 700px;
+  text-align: center;
+}
+
+.about-card {
+  background: #fff;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.profile-img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.social-img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.role {
+  color: #555;
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+.bio {
+  font-size: 16px;
+  color: #333;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 15px;
+}
+
+.social-img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  opacity: 0.85;
+}
+
+.social-img:hover {
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+
+.about-app {
+  background: #f8f8f8;
+  padding: 20px;
+  border-radius: 15px;
+  text-align: left;
+}
+
+.faq-section {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.faq details {
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.faq summary {
+  cursor: pointer;
+  font-weight: bold;
+  color: #333;
+}
+
+.faq p {
+  margin-top: 5px;
+  color: #444;
 }

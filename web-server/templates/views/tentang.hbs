@@ -5,9 +5,49 @@
     
     <div class="main-content">
         {{>header}}
-        <img src="/img/panca.png" alt="panca" class="portrait">
+        <section class="about-container">
+            <div class="about-card">
+                <img src="/img/panca.png" alt="FPG" class="profile-img">
+                <h2>{{nama}}</h2>
+                <p class="role">Fullstack Developer | Mahasiswa</p>
+                <p class="bio">
+                    Halo! Saya {{nama}}, pengembang aplikasi <b>Cek Cuaca</b>. Aplikasi ini dirancang untuk
+                    memudahkan pengguna dalam mendapatkan informasi cuaca terkini menggunakan kombinasi API
+                    dari <b>Weatherstack</b> dan <b>Mapbox</b>.
+                </p>
+                <div class="social-links">
+                    <a href="mailto:example@mail.com" target="_blank" aria-label="Email"><img class="social-img" src="/img/email.png" alt=""></a>
+                    <a href="https://github.com/florensius" target="_blank" aria-label="Github"><img class="social-img" src="/img/github.png" alt=""></a>
+                    <a href="https://www.linkedin.com/" target="_blank" aria-label="LinkedIn"><img class="social-img" src="/img/linkedin.png" alt=""></a>
+                </div>
+            </div>
+
+            <div class="about-app">
+                <h3>Tentang Aplikasi</h3>
+                <p>
+                    Aplikasi ini dibangun menggunakan <b>Node.js</b> dan <b>Express.js</b> sebagai server-side
+                    framework, serta memanfaatkan <b>Handlebars (HBS)</b> untuk templating. Data cuaca diambil
+                    secara real-time dari API Weatherstack berdasarkan koordinat hasil pemetaan dari API Mapbox.
+                </p>
+            </div>
+        </section>
     </div>
     {{>footer}}
     
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

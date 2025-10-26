@@ -6,8 +6,38 @@
     <div class="main-content">
         {{>header}}
         <p>{{teksBantuan}}</p>
+
+        <section class="faq-section">
+            <h2>Frequently Asked Questions (FAQ)</h2>
+            <p>Temukan jawaban atas pertanyaan umum seputar aplikasi Cek Cuaca!</p>
+
+            <div class="faq">
+                <details>
+                    <summary>Bagaimana cara menggunakan aplikasi ini?</summary>
+                    <p>Masukkan nama lokasi pada kolom pencarian di halaman utama, lalu klik "Cari Lokasi". Cuaca terkini akan ditampilkan secara otomatis.</p>
+                </details>
+                <details>
+                    <summary>Data cuaca dari mana asalnya?</summary>
+                    <p>Data cuaca diambil dari layanan API <b>Weatherstack</b> dan dikombinasikan dengan data lokasi dari <b>Mapbox</b>.</p>
+                </details>
+                <details>
+                    <summary>Apakah aplikasi ini membutuhkan koneksi internet?</summary>
+                    <p>Ya, karena aplikasi memerlukan koneksi untuk mengakses data dari API eksternal.</p>
+                </details>
+                <details>
+                    <summary>Apakah aplikasi ini bisa digunakan di HP?</summary>
+                    <p>Bisa! Aplikasi ini bersifat <i>responsive</i> dan dapat diakses dari perangkat mobile melalui browser.</p>
+                </details>
+                <details>
+                    <summary>Saya ingin memberi saran, bagaimana caranya?</summary>
+                    <p>Silakan kirimkan masukan atau pertanyaan melalui email yang tercantum di halaman <b>Tentang</b>.</p>
+                </details>
+            </div>
+        </section>
     </div>
     {{>footer}}
 
 </body>
 </html>
+
+
