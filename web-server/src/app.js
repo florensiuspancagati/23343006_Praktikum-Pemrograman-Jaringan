@@ -1,7 +1,8 @@
 const path = require('path');
 const hbs = require('hbs');
 const express = require('express');
-const { title } = require('process');
+const geocode = require('./utils/geocode');
+const forecast = require('./utils/predCuaca');
 
 const app = express();
 const port = 4000;
@@ -42,6 +43,29 @@ app.get('/bantuan', (req, res) => {
 
 // HALAMAN INFO CUACA
 app.get('/infocuaca', (req, res) => {
+    // VALIDASI QUERY ADDRESS
+    if(!req.query.address) {
+        return res.send({
+            error: 'Kowe kudu nyedhiyakake alamat seng arep di golek i!',
+        })
+    }
+    // NGGOLEK KOORDINAT LATITUDE & LONGITUDE
+    geocode(req.query.address, (error, { latitude, longitude, location } = {}) => {
+        if(error) {
+            return res.send({ error })
+        }
+        forecast(latitude, longitude, (error, dataPrediksi) => {
+            if(error) {
+                return res.send({ error })
+            }
+            res.send({
+                predCuaca: dataPrediksi,
+                lokasi: location,
+                alamat: req.query.address,
+            })
+        })
+    })
+    // Contoh respon JSON
     res.send([{
         title: 'Info Cuaca',
         img: '/img/cuaca.png',
