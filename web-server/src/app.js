@@ -65,13 +65,6 @@ app.get('/infocuaca', (req, res) => {
             })
         })
     })
-    // Contoh respon JSON
-    res.send([{
-        title: 'Info Cuaca',
-        img: '/img/cuaca.png',
-        predCuaca: 'meh udyan paleng',
-        lokasi: 'Kuto Padhang',
-    }]);
 })
 
 // HALAMAN TENTANG
