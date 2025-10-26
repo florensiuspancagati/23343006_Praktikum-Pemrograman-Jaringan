@@ -19,7 +19,6 @@ hbs.registerPartials(direktoriPartials);
 // SETUP DIREKTORI STATIS
 app.use(express.static(direktoriPublic));
 
-
 // HALAMAN UTAMA
 app.get('', (req, res) => {
     res.render('index', {
