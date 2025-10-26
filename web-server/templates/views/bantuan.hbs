@@ -3,8 +3,8 @@
     {{>head}}
 <body>
     
+    <p>{{>header}}</p>
     <div class="main-content">
-        {{>header}}
         <p>{{teksBantuan}}</p>
 
         <section class="faq-section">
@@ -31,6 +31,37 @@
                 <details>
                     <summary>Saya ingin memberi saran, bagaimana caranya?</summary>
                     <p>Silakan kirimkan masukan atau pertanyaan melalui email yang tercantum di halaman <b>Tentang</b>.</p>
+                </details>
+
+                <details>
+                    <summary>Halaman ini digunakan untuk apa?</summary>
+                    <p>Halaman Bantuan digunakan untuk memberikan informasi dan panduan kepada pengguna mengenai fungsi dan penggunaan aplikasi <b>Cek Cuaca</b>. Melalui halaman ini, pengguna dapat memahami cara kerja aplikasi, sumber data, serta konsep yang digunakan.</p>
+                </details>
+
+                <details>
+                    <summary>Apa itu API?</summary>
+                    <p>API (Application Programming Interface) adalah antarmuka yang memungkinkan dua sistem perangkat lunak untuk saling berkomunikasi. API bertindak sebagai jembatan agar aplikasi dapat mengambil atau mengirim data dari sumber eksternal tanpa perlu mengelola data secara langsung.</p>
+                </details>
+
+                <details>
+                    <summary>API apa yang digunakan dalam aplikasi ini?</summary>
+                    <p>Aplikasi <b>Cek Cuaca</b> menggunakan dua API utama:
+                        <ul>
+                            <li><b>Weatherstack API</b> — untuk mendapatkan informasi cuaca secara real-time, termasuk suhu, kecepatan angin, dan kondisi langit.</li>
+                            <li><b>Mapbox API</b> — untuk mendapatkan data lokasi dan koordinat berdasarkan nama kota atau tempat yang dimasukkan pengguna.</li>
+                        </ul>
+                    </p>
+                </details>
+
+                <details>
+                    <summary>Salah satu pola arsitektur API adalah RESTful?</summary>
+                    <p><b>RESTful API</b> merupakan pola arsitektur yang menggunakan prinsip <i>Representational State Transfer</i>. REST bekerja dengan memanfaatkan protokol HTTP dan mendukung operasi dasar seperti <b>GET</b>, <b>POST</b>, <b>PUT</b>, dan <b>DELETE</b>. REST banyak digunakan karena sederhana, cepat, serta mudah diintegrasikan dengan aplikasi berbasis web maupun mobile.</p>
+                </details>
+
+                <details>
+                    <summary>Gambar Penjelas</summary>
+                    <p>Berikut ilustrasi sederhana alur komunikasi antara aplikasi, server, dan API:</p>
+                    <img src="/img/restapi.png" alt="Diagram Arsitektur API" class="faq-image">
                 </details>
             </div>
         </section>

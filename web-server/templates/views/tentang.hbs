@@ -3,8 +3,8 @@
     {{>head}}
 <body>
     
+    <p>{{>header}}</p>
     <div class="main-content">
-        {{>header}}
         <section class="about-container">
             <div class="about-card">
                 <img src="/img/panca.png" alt="FPG" class="profile-img">
@@ -23,12 +23,58 @@
             </div>
 
             <div class="about-app">
+                <div class="bubble">
+                    <h3>LATAR BELAKANG PENDIDIKAN</h3>
+                    <p><b>Universitas Negeri Padang</b> — Padang, Sumatera Barat<br/></p>
+                    <p>S1 Informatika, IPK 3.64 dari 4.00<br/><i>Agustus 2023 - Sekarang</i></p>
+                </div>
+
+                <div class="bubble">
+                    <h3>PENGALAMAN ORGANISASI</h3>
+                    <p><b>Kuliah Kerja Nyata (KKN)</b> — Mentawai, Sumatera Barat<br />
+                    Wakil Koordinator Perlengkapan (Juni 2025 – Juli 2025, 37 Hari)<br />
+                    • Menjamin ketersediaan dan distribusi perlengkapan selama kegiatan KKN.<br />
+                    • Berhasil menjadi penanggung jawab program kerja Ecobrick.</p>
+                </div>
+
+                <div class="bubble">
+                    <h3>PROYEK</h3>
+                    <p><b>Website E-Commerce – Proyek Pribadi</b> (Februari 2024 – Juni 2024)<br />
+                    Programmer Web Fullstack, Nilai 4.00/4.00<br />
+                    • Membangun fullstack E-Commerce menggunakan PHP (Native), MariaDB, HTML, CSS, dll.<br />
+                    • Menambahkan fitur pembayaran menggunakan PayPal.</p>
+
+                    <p><b>Deep Learning (CNN) – Proyek Kelompok</b> (Agustus 2024 – Desember 2024)<br />
+                    Programmer CNN, Nilai 4.00/4.00<br />
+                    • Mengimplementasikan CNN menggunakan Python untuk pengenalan gambar bahasa isyarat (ASL).<br />
+                    • Berhasil mengenali bahasa isyarat tangan dengan akurasi tinggi.</p>
+                </div>
+
+                <div class="bubble">
+                    <h3>KETERAMPILAN & BAHASA</h3>
+                    <p><b>Keterampilan Teknis:</b> HTML, CSS, JavaScript, React, Node.js, MongoDB, MariaDB, Python, Git, GitHub, C, C++, Java, dan teknologi lainnya.<br />
+                    <b>Soft Skills:</b> Problem solving, Komunikasi Efektif, Teamwork, Manajemen Waktu, Adaptabilitas, Empati, Tekun, Kecerdasan Emosional.<br />
+                    <b>Bahasa:</b> Indonesia (Native), English (Intermediate)</p>
+                </div>
+
+                <div class="bubble">
+                    <h3>PRESTASI & SERTIFIKASI</h3>
+                    <ul>
+                        <li>Lolos Pendanaan PKM-RSH 2025 – “Menelusuri Akar Perilaku Judi Online pada Gen Z...”</li>
+                        <li>Sertifikasi Resmi Cisco MTCNA (No. 2506NA7251, 14 Juni 2025)</li>
+                        <li>Sertifikat Pembelajaran Codepolitan</li>
+                        <li>Sertifikat Partisipan Bootcamp Internasional: “Introduction to Successful Career Planning for IT/Computer” – SmartPath (29 Januari 2024)</li>
+                    </ul>
+                </div>
+
                 <h3>Tentang Aplikasi</h3>
-                <p>
-                    Aplikasi ini dibangun menggunakan <b>Node.js</b> dan <b>Express.js</b> sebagai server-side
-                    framework, serta memanfaatkan <b>Handlebars (HBS)</b> untuk templating. Data cuaca diambil
-                    secara real-time dari API Weatherstack berdasarkan koordinat hasil pemetaan dari API Mapbox.
-                </p>
+                <div class="bubble">
+                    <p>
+                        Aplikasi ini dibangun menggunakan <b>Node.js</b> dan <b>Express.js</b> sebagai server-side
+                        framework, serta memanfaatkan <b>Handlebars (HBS)</b> untuk templating. Data cuaca diambil
+                        secara real-time dari API Weatherstack berdasarkan koordinat hasil pemetaan dari API Mapbox.
+                    </p>
+                </div>
             </div>
         </section>
     </div>
@@ -44,10 +90,5 @@
 
 
 
-
-
-
-
-
-
-
+    <div class="about-app">
+    </div>

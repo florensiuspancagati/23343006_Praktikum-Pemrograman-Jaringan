@@ -3,6 +3,7 @@ const hbs = require('hbs');
 const express = require('express');
 const geocode = require('./utils/geocode');
 const forecast = require('./utils/predCuaca');
+const beritaAPI = require('./utils/berita');
 
 const app = express();
 const port = 4000;
@@ -77,6 +78,38 @@ app.get('/tentang', (req, res) => {
         pekerjaan: 'Sedang Berusaha Mencari Pekerjaan:)',
     });
 })
+
+// HALAMAN BERITA
+// app.get('/berita', (req, res) => {
+//     res.render('berita', {
+//         title: 'Berita',
+//         img: '/img/cuaca.png',
+//         judul: 'Halaman Berita Kawula',
+//         nama: 'Florensius Panca gati',
+//     });
+// })
+
+app.get('/berita', (req, res) => {
+    beritaAPI((error, berita) => {
+        if (error) {
+            return res.render('berita', {
+                title: 'Berita',
+                img: '/img/cuaca.png',
+                judul: 'Halaman Berita Kawula',
+                nama: 'Florensius Panca gati',
+                error
+            });
+        }
+ 
+        res.render('berita', {
+            title: 'Berita',
+            img: '/img/cuaca.png',
+            judul: 'Halaman Berita Kawula',
+            nama: 'Florensius Panca gati',
+            berita
+        });
+    });
+});
 
 // HALAMAN 404
 app.all('/bantuan/{*splat}', (req, res) => {
