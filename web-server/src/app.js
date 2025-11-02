@@ -134,6 +134,8 @@ app.all('{*splat}', (req, res) => {
 });
 
 // MEMULAI SERVER
-app.listen(port, () => {
-    console.log(`Server mlaku ing http://localhost:${port}`);
-})
+// app.listen(port, () => {
+//     console.log(`Server mlaku ing http://localhost:${port}`);
+// })
+
+module.exports = app;
