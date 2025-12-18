@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detail Destinasi - SUMTOUR</title>
+    <link rel="stylesheet" href="../../css/destinasi-detail.css" />
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet" />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container header-container">
+        <div class="logo">
+          <img
+            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIwIDBDOC45NTQgMCAwIDguOTU0IDAgMjBTOC45NTQgNDAgMjAgNDBTNDAgMzEuMDQ2IDQwIDIwUzMxLjA0NiAwIDIwIDBaIiBmaWxsPSIjMzQ5OGRiIi8+CjxwYXRoIGQ9Ik0xNiAxNkgyNFYyNEgxNlYxNloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yNCAyNEgyNlYyNkgyNFYyNFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yNiAyNkgyOFYyOEgyNlYyNloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yOCAyOEgzMFYzMEgyOFYyOFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xNiAyNEgxNFYyNkgxNlYyNFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xNCAyNkgxMlYyOEgxNFYyNloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xMiAyOEgxMFYzMEgxMlYyOFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yNiAxNkgyOFYxOEgyNlYxNloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yOCAxOEgzMFYyMEgyOFYxOFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xNCAxNkgxNlYxOEgxNFYxNloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xMiAxOEgxNFYyMEgxMlYxOFoiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo="
+            alt="SUMTOUR Logo"
+          />
+          <h1>SUMTOUR</h1>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="../index.html">Beranda</a></li>
+            <li><a href="destinasi.html">Destinasi</a></li>
+            <li><a href="../guide/tour-guide.html">Tour Guide</a></li>
+            <li><a href="../user/riwayat.html">Riwayat</a></li>
+            <li><a href="../tentang.html">Tentang</a></li>
+          </ul>
+        </nav>
+        <div class="user-actions" id="userActions">
+          <!-- Akan diisi oleh JavaScript -->
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <div class="container">
+        <!-- Back Button -->
+        <div class="back-button">
+          <a href="destinasi.html">← Kembali ke Destinasi</a>
+        </div>
+
+        <!-- Destinasi Detail -->
+        <div class="destinasi-detail" id="destinasiDetail">
+          <!-- Data destinasi akan diisi oleh JavaScript -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-column">
+            <h3>Tentang SUMTOUR</h3>
+            <p>SUMTOUR adalah platform rekomendasi wisata di Sumatera Barat yang membantu wisatawan menemukan destinasi terbaik sesuai minat mereka.</p>
+            <div class="social-links">
+              <a href="#"><span>FB</span></a>
+              <a href="#"><span>IG</span></a>
+              <a href="#"><span>TW</span></a>
+              <a href="#"><span>YT</span></a>
+            </div>
+          </div>
+          <div class="footer-column">
+            <h3>Kontak Kami</h3>
+            <p><span>📍</span> Jl. Prof. Dr. Hamka, Air Tawar Barat, Padang Utara, Kota Padang</p>
+            <p><span>📞</span> +62 812 3456 7890</p>
+            <p><span>✉️</span> info@sumtour.id</p>
+          </div>
+          <div class="footer-column">
+            <h3>Link Cepat</h3>
+            <a href="../index.html">Beranda</a>
+            <a href="destinasi.html">Destinasi Wisata</a>
+            <a href="../guide/tour-guide.html">Tour Guide</a>
+            <a href="../user/riwayat.html">Riwayat Saya</a>
+            <a href="../tentang.html">Tentang Kami</a>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>&copy; 2025 SUMTOUR - Web Aplikasi Rekomendasi Wisata di Sumatera Barat. All rights reserved.</p>
+          <p>Disusun oleh: Florensius Panca Gati (23343006) & Meli Fitri Zamili (23343010)</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Fungsi untuk menampilkan detail destinasi
+      async function displayDestinasiDetail() {
+        const destinasiDetail = document.getElementById("destinasiDetail");
+        // Ambil ID dari URL
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get("id");
+
+        if (!id) {
+          destinasiDetail.innerHTML = `
+            <div style="padding: 40px; text-align: center;">
+              <h3>ID Destinasi tidak ditemukan</h3>
+              <a href="destinasi.html" style="color: #3498db;">Kembali ke Destinasi</a>
+            </div>`;
+          return;
+        }
+
+        // Ambil data dari backend
+        let response;
+        try {
+          response = await fetch(`http://localhost:3000/destinasi/${id}`);
+        } catch (err) {
+          console.error(err);
+        }
+
+        const result = await response.json();
+
+        if (!result.success || !result.data) {
+          destinasiDetail.innerHTML = `
+            <div style="padding: 40px; text-align: center;">
+              <h3>Destinasi tidak ditemukan di database</h3>
+              <a href="destinasi.html" style="color: #3498db;">Kembali ke Destinasi</a>
+            </div>`;
+          return;
+        }
+
+        const selectedDestinasi = result.data; // **INI DATA DARI BACKEND**
+
+        // SIMPAN KE LOCALSTORAGE (opsional, untuk fitur lain)
+        localStorage.setItem("selectedDestinasi", JSON.stringify(selectedDestinasi));
+
+        // Render tampilan (kode kamu tetap dipakai)
+        destinasiDetail.innerHTML = `
+                <div class="destinasi-header">
+                    <h1>${selectedDestinasi.nama}</h1>
+                    <div class="destinasi-meta">
+                        <div class="meta-item">
+                            <span>📍</span>
+                            <span>${selectedDestinasi.lokasi}</span>
+                        </div>
+                        <div class="meta-item">
+                            <span>💰</span>
+                            <span>${selectedDestinasi.harga}</span>
+                        </div>
+                    </div>
+                    <span class="destinasi-category">${getKategoriName(selectedDestinasi.kategori)}</span>
+                </div>
+
+                <div class="destinasi-content">
+                    <div class="left-column">
+                        <div class="gallery-section">
+                            <img src="http://localhost:3000${selectedDestinasi.gambar}" alt="${selectedDestinasi.nama}" class="main-image" id="mainImage">
+                        </div>
+
+                        <div class="description-section">
+                            <h3>Deskripsi</h3>
+                            <p>${selectedDestinasi.deskripsi}</p>
+                        </div>
+
+                    </div>
+
+                    <div class="right-column">
+                        <div class="info-card">
+                            <h4>📍 Informasi Lokasi</h4>
+                            <div class="info-item">
+                                <span class="info-label">Alamat:</span>
+                                <span class="info-value">${selectedDestinasi.lokasi}, Sumatera Barat</span>
+                            </div>
+                        </div>
+
+                        <div class="info-card">
+                            <h4>💰 Biaya Masuk</h4>
+                            <div class="info-item">
+                                <span class="info-label">Tiket:</span>
+                                <span class="info-value">${selectedDestinasi.harga}</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Parkir:</span>
+                                <span class="info-value">Rp 5.000 - Rp 10.000</span>
+                            </div>
+                        </div>
+
+                        <button class="btn-save" onclick="tambahKeRiwayat()">
+                            💾 Tambah ke Riwayat
+                        </button>
+                    </div>
+                </div>
+
+                <div id="map" class="map-section" style="height: 450px; border-radius: 20px;"></div>
+            `;
+        
+        // Setelah HTML dirender
+        setTimeout(() => {
+          initMap(selectedDestinasi.latitude, selectedDestinasi.longitude, selectedDestinasi.nama);
+        }, 200);
+      }
+
+      // fungsi map
+      // MAPBOX
+      function initMap(lat, lng, name) {
+        mapboxgl.accessToken = 'pk.eyJ1IjoiZmxvcmVuc2l1cyIsImEiOiJjbWg3c3c5YzcwcTdyMnhwdTVreW1qdXRsIn0.LmgVCoaMP5r1SRvnvVggrQ';
+
+        const map = new mapboxgl.Map({
+          container: 'map',  // ID dari div peta
+          style: 'mapbox://styles/mapbox/satellite-streets-v12',
+          center: [lng, lat],
+          zoom: 13
+        });
+
+        new mapboxgl.Marker()
+          .setLngLat([lng, lat])
+          .setPopup(new mapboxgl.Popup().setText(name))
+          .addTo(map);
+      }
+
+      // Fungsi untuk mendapatkan nama kategori
+      function getKategoriName(kategori) {
+        const kategoriMap = {
+          alam: "Wisata Alam",
+          budaya: "Wisata Budaya",
+          kuliner: "Wisata Kuliner",
+          sejarah: "Wisata Sejarah",
+        };
+        return kategoriMap[kategori] || kategori;
+      }
+
+      // Fungsi tambah ke riwayat
+      function tambahKeRiwayat() {
+        const isLoggedIn = localStorage.getItem("isLoggedIn");
+        if (isLoggedIn !== "true") {
+          alert("Silakan login terlebih dahulu untuk menambah ke riwayat!");
+          window.location.href = "../auth/login.html";
+          return;
+        }
+
+        const selectedDestinasi = JSON.parse(localStorage.getItem("selectedDestinasi"));
+        if (selectedDestinasi) {
+          let riwayat = JSON.parse(localStorage.getItem("user_riwayat") || "[]");
+
+          const riwayatItem = {
+            ...selectedDestinasi,
+            tanggal: new Date().toLocaleDateString("id-ID"),
+            waktu: new Date().toLocaleTimeString("id-ID"),
+          };
+
+          riwayat.unshift(riwayatItem);
+          localStorage.setItem("user_riwayat", JSON.stringify(riwayat));
+
+          alert(`"${selectedDestinasi.nama}" berhasil ditambahkan ke riwayat!`);
+        }
+      }
+
+      // Fungsi untuk mengatur tampilan user actions
+      function setupUserActions() {
+        const userActions = document.getElementById("userActions");
+        const isLoggedIn = localStorage.getItem("isLoggedIn");
+        const username = localStorage.getItem("username");
+
+        if (isLoggedIn === "true" && username) {
+          userActions.innerHTML = `
+                    <div class="user-info">
+                        <span>Halo, ${username}</span>
+                        <button class="logout-btn" onclick="logout()">Logout</button>
+                    </div>
+                `;
+        } else {
+          userActions.innerHTML = `
+                    <a href="../auth/register.html">Daftar</a>
+                    <a href="../auth/login.html" class="login-btn">Masuk</a>
+                `;
+        }
+      }
+
+      // Fungsi logout
+      function logout() {
+        if (confirm("Apakah Anda yakin ingin logout?")) {
+          localStorage.removeItem("isLoggedIn");
+          localStorage.removeItem("user_role");
+          localStorage.removeItem("username");
+          localStorage.removeItem("admin_logged_in");
+          alert("Logout berhasil!");
+          window.location.href = "../index.html";
+        }
+      }
+
+      // Initialize
+      document.addEventListener("DOMContentLoaded", function () {
+        displayDestinasiDetail();
+        setupUserActions();
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Destinasi Wisata - SUMTOUR</title>
+    <link rel="stylesheet" href="../../css/destinasi.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container header-container">
+        <div class="logo">
+          <img
+            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIwIDBDOC45NTQgMCAwIDguOTU0IDAgMjBTOC45NTQgNDAgMjAgNDBTNDAgMzEuMDQ2IDQwIDIwUzMxLjA0NiAwIDIwIDBaIiBmaWxsPSIjMzQ5OGRiIi8+CjxwYXRoIGQ9Ik0xNiAxNkgyNFYyNEgxNlYxNloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yNCAyNEgyNlYyNkgyNFYyNFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yNiAyNkgyOFYyOEgyNlYyNloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yOCAyOEgzMFYzMEgyOFYyOFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xNiAyNEgxNFYyNkgxNlYyNFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xNCAyNkgxMlYyOEgxNFYyNloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xMiAyOEgxMFYzMEgxMlYyOFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yNiAxNkgyOFYxOEgyNlYxNloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yOCAxOEgzMFYyMEgyOFYxOFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xNCAxNkgxNlYxOEgxNFYxNloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xMiAxOEgxNFYyMEgxMlYxOFoiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo="
+            alt="SUMTOUR Logo"
+          />
+          <h1>SUMTOUR</h1>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="../index.html">Beranda</a></li>
+            <li><a href="destinasi.html" class="active">Destinasi</a></li>
+            <li><a href="../guide/tour-guide.html">Tour Guide</a></li>
+            <li><a href="../user/riwayat.html">Riwayat</a></li>
+            <li><a href="../tentang.html">Tentang</a></li>
+          </ul>
+        </nav>
+        <div class="user-actions" id="userActions">
+          <!-- Akan diisi oleh JavaScript -->
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <div class="container">
+        <div class="section-title">
+          <h2>Semua Destinasi Wisata</h2>
+          <p>Temukan semua tempat wisata menarik di Sumatera Barat</p>
+        </div>
+
+        <!-- Filter Section -->
+        <div class="filter-section">
+          <div class="filter-container">
+            <div class="search-box">
+              <input type="text" id="searchInput" placeholder="Cari destinasi wisata..." />
+            </div>
+            <div class="filter-group">
+              <label for="categoryFilter">Kategori</label>
+              <select class="filter-select" id="categoryFilter">
+                <option value="">Semua Kategori</option>
+                <option value="alam">Wisata Alam</option>
+                <option value="budaya">Wisata Budaya</option>
+                <option value="kuliner">Wisata Kuliner</option>
+                <option value="sejarah">Wisata Sejarah</option>
+              </select>
+            </div>
+            <div class="filter-group">
+              <label for="locationFilter">Lokasi</label>
+              <select class="filter-select" id="locationFilter">
+                <option value="">Semua Lokasi</option>
+                <option value="padang">Padang</option>
+                <option value="bukittinggi">Bukittinggi</option>
+                <option value="payakumbuh">Payakumbuh</option>
+                <option value="batusangkar">Batusangkar</option>
+                <option value="padang panjang">Padang Panjang</option>
+              </select>
+            </div>
+            <div class="filter-group">
+              <label for="priceFilter">Harga</label>
+              <select class="filter-select" id="priceFilter">
+                <option value="">Semua Harga</option>
+                <option value="murah">Murah (< Rp 50k)</option>
+                <option value="sedang">Sedang (Rp 50k - 200k)</option>
+                <option value="mahal">Mahal (> Rp 200k)</option>
+              </select>
+            </div>
+            <button class="search-btn" onclick="searchDestinations()">Cari</button>
+          </div>
+        </div>
+
+        <!-- Destinasi Grid -->
+        <div class="destinasi-grid" id="destinasiGrid">
+          <!-- Data destinasi akan diisi oleh JavaScript -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-column">
+            <h3>Tentang SUMTOUR</h3>
+            <p>SUMTOUR adalah platform rekomendasi wisata di Sumatera Barat yang membantu wisatawan menemukan destinasi terbaik sesuai minat mereka.</p>
+            <div class="social-links">
+              <a href="#"><span>FB</span></a>
+              <a href="#"><span>IG</span></a>
+              <a href="#"><span>TW</span></a>
+              <a href="#"><span>YT</span></a>
+            </div>
+          </div>
+          <div class="footer-column">
+            <h3>Kontak Kami</h3>
+            <p><span>📍</span> Jl. Prof. Dr. Hamka, Air Tawar Barat, Padang Utara, Kota Padang</p>
+            <p><span>📞</span> +62 812 3456 7890</p>
+            <p><span>✉️</span> info@sumtour.id</p>
+          </div>
+          <div class="footer-column">
+            <h3>Link Cepat</h3>
+            <a href="index.html">Beranda</a>
+            <a href="destinasi.html">Destinasi Wisata</a>
+            <a href="tour-guide.html">Tour Guide</a>
+            <a href="riwayat.html">Riwayat Saya</a>
+            <a href="tentang.html">Tentang Kami</a>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>&copy; 2025 SUMTOUR - Web Aplikasi Rekomendasi Wisata di Sumatera Barat. All rights reserved.</p>
+          <p>Disusun oleh: Florensius Panca Gati (23343006) & Meli Fitri Zamili (23343010)</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Data destinasi wisata
+      let destinasiData = [];
+      // Ambil data dari backend
+      async function fetchDestinasiData() {
+        try {
+          const res = await fetch("http://localhost:3000/destinasi/all");
+          const result = await res.json();
+
+          if(!result.success) {
+            console.error("Gagal mengambil data destinasi:", result.message);
+            return;
+          }
+
+          destinasiData = result.data;
+          displayDestinasi(destinasiData);
+        } catch (err) {
+          console.error("Error fetch destinasi:", err);
+        }
+      }
+
+      // Fungsi untuk menampilkan destinasi
+      function displayDestinasi(destinasiList = destinasiData) {
+        const grid = document.getElementById("destinasiGrid");
+        grid.innerHTML = "";
+
+        if (destinasiList.length === 0) {
+          grid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: #7f8c8d;">Tidak ada destinasi yang ditemukan</div>';
+          return;
+        }
+
+        destinasiList.forEach((destinasi) => {
+          const card = document.createElement("div");
+          card.className = "destinasi-card";
+          card.innerHTML = `
+                    <img src="http://localhost:3000${destinasi.gambar}" class="card-image">
+                    <div class="card-content">
+                        <h3>${destinasi.nama}</h3>
+                        <div class="card-location">
+                            <span>📍</span> ${destinasi.lokasi}
+                        </div>
+                        <span class="card-category">${getKategoriName(destinasi.kategori)}</span>
+                        <div class="card-price">${destinasi.harga}</div>
+                        <p class="card-description">${destinasi.deskripsi}</p>
+                        <div class="card-actions">
+                            <button class="btn-detail" onclick="lihatDetail('${destinasi._id}')">Lihat Detail</button>
+                        </div>
+                    </div>
+                `;
+          grid.appendChild(card);
+        });
+      }
+
+      // Fungsi untuk mendapatkan nama kategori
+      function getKategoriName(kategori) {
+        const kategoriMap = {
+          alam: "Wisata Alam",
+          budaya: "Wisata Budaya",
+          kuliner: "Wisata Kuliner",
+          sejarah: "Wisata Sejarah",
+        };
+        return kategoriMap[kategori] || kategori;
+      }
+
+      // Fungsi pencarian destinasi
+      function searchDestinations() {
+        const searchTerm = document.getElementById("searchInput").value.toLowerCase();
+        const category = document.getElementById("categoryFilter").value;
+        const location = document.getElementById("locationFilter").value;
+        const price = document.getElementById("priceFilter").value;
+
+        const filtered = destinasiData.filter((destinasi) => {
+          const matchSearch = destinasi.nama.toLowerCase().includes(searchTerm) || destinasi.lokasi.toLowerCase().includes(searchTerm) || destinasi.deskripsi.toLowerCase().includes(searchTerm);
+          const matchCategory = !category || destinasi.kategori === category;
+          const matchLocation = !location || destinasi.lokasi.toLowerCase().includes(location.toLowerCase());
+          const matchPrice = !price || checkPriceRange(destinasi, price);
+
+          return matchSearch && matchCategory && matchLocation && matchPrice;
+        });
+
+        displayDestinasi(filtered);
+      }
+      // Fungsi untuk memeriksa rentang harga
+      function checkPriceRange(destinasi, range) {
+        const tiket = destinasi.biaya?.tiket ? Number(destinasi.biaya.tiket) : 0;
+
+        if (range === "murah") {
+          return tiket < 50000;
+        }
+        if (range === "sedang") {
+          return tiket >= 50000 && tiket <= 200000;
+        }
+        if (range === "mahal") {
+          return tiket > 200000;
+        }
+        return true;
+      }
+
+      // Fungsi lihat detail destinasi
+      function lihatDetail(id) {
+        window.location.href = `destinasi-detail.html?id=${id}`;
+      }
+
+      // Fungsi untuk mengatur tampilan user actions
+      function setupUserActions() {
+        const userActions = document.getElementById("userActions");
+        const isLoggedIn = localStorage.getItem("isLoggedIn");
+        const username = localStorage.getItem("username");
+
+        if (isLoggedIn === "true" && username) {
+          userActions.innerHTML = `
+            <div class="user-info">
+                <span>Halo, ${username}</span>
+                <button class="logout-btn" onclick="logout()">Logout</button>
+            </div>
+          `;
+        } else {
+          userActions.innerHTML = `
+            <a href="../auth/register.html">Daftar</a>
+            <a href="../auth/login.html" class="login-btn">Masuk</a>
+          `;
+        }
+      }
+
+
+
+      // Fungsi logout
+      function logout() {
+        if (confirm("Apakah Anda yakin ingin logout?")) {
+          localStorage.removeItem("isLoggedIn");
+          localStorage.removeItem("user_role");
+          localStorage.removeItem("username");
+          localStorage.removeItem("admin_logged_in");
+          alert("Logout berhasil!");
+          window.location.href = "../index.html";
+        }
+      }
+
+
+      // Initialize
+      document.addEventListener("DOMContentLoaded", function () {
+        fetchDestinasiData();
+        setupUserActions();
+      });
+    </script>
+  </body>
+</html>

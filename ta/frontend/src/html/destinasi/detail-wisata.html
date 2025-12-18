@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detail Wisata - SUMTOUR</title>
+    <link rel="stylesheet" href="../../css/detail-wisata.css" />
+  </head>
+  <body>
+    <header>
+      <div class="container header-container">
+        <div class="logo">
+          <img
+            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIwIDBDOC45NTQgMCAwIDguOTU0IDAgMjBTOC45NTQgNDAgMjAgNDBTNDAgMzEuMDQ2IDQwIDIwUzMxLjA0NiAwIDIwIDBaIiBmaWxsPSIjMzQ5OGRiIi8+CjxwYXRoIGQ9Ik0xNiAxNkgyNFYyNEgxNlYxNloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yNCAyNEgyNlYyNkgyNFYyNFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yNiAyNkgyOFYyOEgyNlYyNloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yOCAyOEgzMFYzMEgyOFYyOFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xNiAyNEgxNFYyNkgxNlYyNFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xNCAyNkgxMlYyOEgxNFYyNloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xMiAyOEgxMFYzMEgxMlYyOFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yNiAxNkgyOFYxOEgyNlYxNloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yOCAxOEgzMFYyMEgyOFYxOFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xNCAxNkgxNlYxOEgxNFYxNloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xMiAxOEgxNFYyMEgxMlYxOFoiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo="
+            alt="SUMTOUR Logo"
+          />
+          <h1>SUMTOUR</h1>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="../index.html">Beranda</a></li>
+            <li><a href="destinasi.html">Destinasi</a></li>
+            <li><a href="../guide/tour-guide.html">Tour Guide</a></li>
+            <li><a href="../tentang.html">Tentang</a></li>
+          </ul>
+        </nav>
+        <div class="user-actions">
+          <a href="../auth/register.html">Daftar</a>
+          <a href="../auth/login.html" class="login-btn">Masuk</a>
+        </div>
+      </div>
+    </header>
+
+    <div class="container main-content">
+      <a href="../index.html" class="back-btn">← Kembali</a>
+
+      <div id="wisata-content">
+        <!-- Konten akan di-load oleh JavaScript -->
+        <div style="text-align: center; padding: 50px">
+          <h2>Memuat detail wisata...</h2>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-column">
+            <h3>Tentang SUMTOUR</h3>
+            <p>SUMTOUR adalah platform rekomendasi wisata di Sumatera Barat.</p>
+          </div>
+          <div class="footer-column">
+            <h3>Kontak Kami</h3>
+            <p>📍 Padang, Sumatera Barat</p>
+            <p>📞 +62 812 3456 7890</p>
+          </div>
+          <div class="footer-column">
+            <h3>Link Cepat</h3>
+            <a href="../index.html">Beranda</a>
+            <a href="destinasi.html">Destinasi</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Data wisata
+      const wisataData = {
+        "ngarai-sianok": {
+          title: "Ngarai Sianok",
+          location: "Bukittinggi, Sumatera Barat",
+          images: {
+            main: "https://images.unsplash.com/photo-1594736797933-d0e7603dd7e8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80",
+            thumbnails: [
+              "https://images.unsplash.com/photo-1594736797933-d0e7603dd7e8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80",
+              "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Ngarai_sianok_bkt.jpg/400px-Ngarai_sianok_bkt.jpg",
+              "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Ngarai_Sianok_dari_Janjang_Koto_Gadang.jpg/400px-Ngarai_Sianok_dari_Janjang_Koto_Gadang.jpg",
+              "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Ngarai_sianok.jpg/400px-Ngarai_sianok.jpg",
+            ],
+          },
+          description:
+            "Ngarai Sianok adalah sebuah lembah curam yang terletak di jantung Kota Bukittinggi, Sumatera Barat. Ngarai ini memanjang dan berkelok sebagai garis batas kota di selatan dan timur, membentuk sebuah jurang yang besar dengan kedalaman sekitar 100-120 meter dan panjang sekitar 15 km.",
+          facilities: ["Area Parkir Luas", "Toilet Umum", "Warung Makan", "Spot Foto Terbaik", "Pemandu Wisata"],
+          price: "Rp 15.000 - Rp 25.000",
+          hours: "08:00 - 18:00 WIB",
+          rating: "4.7/5",
+        },
+        "jam-gadang": {
+          title: "Jam Gadang",
+          location: "Bukittinggi, Sumatera Barat",
+          images: {
+            main: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Jam_Gadang_Bukittinggi.jpg/800px-Jam_Gadang_Bukittinggi.jpg",
+            thumbnails: [
+              "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Jam_Gadang_Bukittinggi.jpg/400px-Jam_Gadang_Bukittinggi.jpg",
+              "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Jam_Gadang_2022.jpg/400px-Jam_Gadang_2022.jpg",
+              "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Jam_gadang_bukittinggi.jpg/400px-Jam_gadang_bukittinggi.jpg",
+              "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Jam_Gadang_di_malam_hari.jpg/400px-Jam_Gadang_di_malam_hari.jpg",
+            ],
+          },
+          description: "Jam Gadang adalah menara jam yang menjadi penanda kota Bukittinggi. Menara ini memiliki jam dengan ukuran besar di empat sisinya sehingga disebut Jam Gadang.",
+          facilities: ["Area Parkir", "Toilet Umum", "Food Court", "Spot Foto", "Pusat Informasi"],
+          price: "Gratis",
+          hours: "24 Jam",
+          rating: "4.5/5",
+        },
+      };
+
+      // Ambil parameter dari URL
+      function getUrlParams() {
+        const params = new URLSearchParams(window.location.search);
+        return params.get("wisata");
+      }
+
+      // Load data wisata
+      function loadWisataData() {
+        const wisataId = getUrlParams();
+        const wisata = wisataData[wisataId];
+
+        if (wisata) {
+          document.title = `${wisata.title} - SUMTOUR`;
+          document.getElementById("wisata-content").innerHTML = `
+                    <div class="detail-header">
+                        <h1 class="page-title">${wisata.title}</h1>
+                        <div class="location">📍 ${wisata.location}</div>
+                    </div>
+
+                    <div class="gallery">
+                        <div class="main-image">
+                            <img src="${wisata.images.main}" alt="${wisata.title}" id="mainImage">
+                        </div>
+                        <div class="thumbnail-grid">
+                            ${wisata.images.thumbnails
+                              .map(
+                                (thumb, index) => `
+                                <div class="thumbnail" onclick="changeImage('${thumb}')">
+                                    <img src="${thumb}" alt="${wisata.title} ${index + 1}">
+                                </div>
+                            `
+                              )
+                              .join("")}
+                        </div>
+                    </div>
+
+                    <div class="detail-content">
+                        <div class="left-column">
+                            <div class="info-card">
+                                <h3>Deskripsi</h3>
+                                <div class="description">
+                                    <p>${wisata.description}</p>
+                                </div>
+                            </div>
+
+                            <div class="info-card">
+                                <h3>Fasilitas</h3>
+                                <ul class="facility-list">
+                                    ${wisata.facilities
+                                      .map(
+                                        (facility) => `
+                                        <li>${facility}</li>
+                                    `
+                                      )
+                                      .join("")}
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="right-column">
+                            <div class="side-info">
+                                <div class="info-item">
+                                    <div class="info-icon">📍</div>
+                                    <div>
+                                        <strong>Lokasi</strong>
+                                        <p>${wisata.location}</p>
+                                    </div>
+                                </div>
+                                <div class="info-item">
+                                    <div class="info-icon">💰</div>
+                                    <div>
+                                        <strong>Biaya Masuk</strong>
+                                        <p>${wisata.price}</p>
+                                    </div>
+                                </div>
+                                <div class="info-item">
+                                    <div class="info-icon">⏰</div>
+                                    <div>
+                                        <strong>Jam Operasional</strong>
+                                        <p>${wisata.hours}</p>
+                                    </div>
+                                </div>
+                                <div class="info-item">
+                                    <div class="info-icon">⭐</div>
+                                    <div>
+                                        <strong>Rating</strong>
+                                        <p>${wisata.rating}</p>
+                                    </div>
+                                </div>
+                                <button class="add-history-btn" onclick="addToHistory('${wisataId}')">
+                                    + Tambah ke Riwayat
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="map-section">
+                        <h3>Lokasi di Peta</h3>
+                        <div class="map-container">
+                            <div style="display: flex; align-items: center; justify-content: center; height: 100%; background-color: #e9ecef; color: #6c757d;">
+                                Peta ${wisata.title}
+                            </div>
+                        </div>
+                    </div>
+                `;
+        } else {
+          document.getElementById("wisata-content").innerHTML = `
+                    <div style="text-align: center; padding: 50px;">
+                        <h2>Wisata tidak ditemukan</h2>
+                        <p>Destinasi yang Anda cari tidak tersedia.</p>
+                        <a href="../index.html" class="back-btn">Kembali ke Beranda</a>
+                    </div>
+                `;
+        }
+      }
+
+      function changeImage(src) {
+        document.getElementById("mainImage").src = src;
+      }
+
+      function addToHistory(wisataId) {
+        alert(`${wisataData[wisataId].title} telah ditambahkan ke riwayat!`);
+      }
+
+      // Load data ketika halaman siap
+      document.addEventListener("DOMContentLoaded", loadWisataData);
+    </script>
+  </body>
+</html>

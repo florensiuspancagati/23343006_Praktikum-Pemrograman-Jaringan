@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daftar - SUMTOUR</title>
+    <link rel="stylesheet" href="../../css/register.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container header-container">
+        <div class="logo">
+          <img
+            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIwIDBDOC45NTQgMCAwIDguOTU0IDAgMjBTOC45NTQgNDAgMjAgNDBTNDAgMzEuMDQ2IDQwIDIwUzMxLjA0NiAwIDIwIDBaIiBmaWxsPSIjMzQ5OGRiIi8+CjxwYXRoIGQ9Ik0xNiAxNkgyNFYyNEgxNlYxNloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yNCAyNEgyNlYyNkgyNFYyNFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yNiAyNkgyOFYyOEgyNlYyNloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yOCAyOEgzMFYzMEgyOFYyOFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xNiAyNEgxNFYyNkgxNlYyNFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xNCAyNkgxMlYyOEgxNFYyNloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xMiAyOEgxMFYzMEgxMlYyOFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yNiAxNkgyOFYxOEgyNlYxNloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yOCAxOEgzMFYyMEgyOFYxOFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xNCAxNkgxNlYxOEgxNFYxNloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xMiAxOEgxNFYyMEgxMlYxOFoiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo="
+            alt="SUMTOUR Logo"
+          />
+          <h1>SUMTOUR</h1>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="../index.html">Beranda</a></li>
+            <li><a href="../destinasi/destinasi.html">Destinasi</a></li>
+            <li><a href="../guide/tour-guide.html">Tour Guide</a></li>
+            <li><a href="../user/riwayat.html">Riwayat</a></li>
+            <li><a href="../tentang.html">Tentang</a></li>
+          </ul>
+        </nav>
+        <div class="user-actions">
+          <a href="register.html" style="color: #3498db">Daftar</a>
+          <a href="login.html" class="login-btn">Masuk</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <div class="container">
+        <div class="auth-container">
+          <div class="auth-card">
+            <h1 class="auth-title">Daftar Akun Baru</h1>
+
+            <form id="registerForm">
+              <div class="form-group">
+                <label for="fullname">Nama Lengkap</label>
+                <input type="text" id="fullname" class="form-control" placeholder="Masukkan nama lengkap" required />
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" class="form-control" placeholder="Masukkan email" required />
+              </div>
+
+              <div class="form-group">
+                <label for="phone">Nomor Telepon</label>
+                <input type="tel" id="phone" class="form-control" placeholder="Masukkan nomor telepon" required />
+              </div>
+
+              <!-- Role Selection -->
+              <div class="role-selection">
+                <label>Daftar Sebagai:</label>
+                <div class="role-options">
+                  <div class="role-option selected" data-role="user">User</div>
+                  <div class="role-option" data-role="guide">Tour Guide</div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" class="form-control" placeholder="Buat username" required />
+              </div>
+
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" class="form-control" placeholder="Buat password" required />
+              </div>
+
+              <div class="form-group">
+                <label for="confirmPassword">Konfirmasi Password</label>
+                <input type="password" id="confirmPassword" class="form-control" placeholder="Ulangi password" required />
+              </div>
+
+              <div class="terms-check">
+                <input type="checkbox" id="terms" required />
+                <label for="terms"> Saya menyetujui <a href="#">Terms and Conditions</a> dan <a href="#">Kebijakan Privasi</a> </label>
+              </div>
+
+              <button type="submit" class="auth-btn">Daftar</button>
+            </form>
+
+            <div class="auth-link">
+              <p>
+                Sudah punya akun?
+                <a href="login.html">Login di sini</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-column">
+            <h3>Tentang SUMTOUR</h3>
+            <p>SUMTOUR adalah platform rekomendasi wisata di Sumatera Barat yang membantu wisatawan menemukan destinasi terbaik sesuai minat mereka.</p>
+            <div class="social-links">
+              <a href="#"><span>FB</span></a>
+              <a href="#"><span>IG</span></a>
+              <a href="#"><span>TW</span></a>
+              <a href="#"><span>YT</span></a>
+            </div>
+          </div>
+          <div class="footer-column">
+            <h3>Kontak Kami</h3>
+            <p><span>📍</span> Jl. Prof. Dr. Hamka, Air Tawar Barat, Padang Utara, Kota Padang</p>
+            <p><span>📞</span> +62 812 3456 7890</p>
+            <p><span>✉️</span> info@sumtour.id</p>
+          </div>
+          <div class="footer-column">
+            <h3>Link Cepat</h3>
+            <a href="../index.html">Beranda</a>
+            <a href="../destinasi/destinasi.html">Destinasi Wisata</a>
+            <a href="../guide/tour-guide.html">Tour Guide</a>
+            <a href="../user/riwayat.html">Riwayat Saya</a>
+            <a href="../tentang.html">Tentang Kami</a>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>&copy; 2025 SUMTOUR - Web Aplikasi Rekomendasi Wisata di Sumatera Barat. All rights reserved.</p>
+          <p>Disusun oleh: Florensius Panca Gati (23343006) & Meli Fitri Zamili (23343010)</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- LOGIC IN REGISTER PAGE WITH JAVASCRIPT -->
+    <script>
+      // ROLE SELECTION AND FORM SUBMISSION
+      document.addEventListener("DOMContentLoaded", function () {
+        const roleOptions = document.querySelectorAll(".role-option");
+        let selectedRole = "user";
+
+        // CHOOSE ROLE
+        roleOptions.forEach((option) => {
+          option.addEventListener("click", function () {
+            roleOptions.forEach((opt) => opt.classList.remove("selected"));
+            this.classList.add("selected");
+            selectedRole = this.getAttribute("data-role");
+          });
+        });
+
+        // SUBMIT FORM
+        document.getElementById("registerForm").addEventListener("submit", async function (e) {
+          e.preventDefault();
+
+          const fullname = document.getElementById("fullname").value;
+          const email = document.getElementById("email").value;
+          const phone = document.getElementById("phone").value;
+          const username = document.getElementById("username").value;
+          const password = document.getElementById("password").value;
+          const confirmPassword = document.getElementById("confirmPassword").value;
+          const terms = document.getElementById("terms").checked;
+
+          if (password !== confirmPassword) {
+            return alert("Password dan konfirmasi password tidak sama!");
+          }
+
+          if (!terms) {
+            return alert("Anda harus menyetujui terms and conditions!");
+          }
+
+          // KIRIM KE BACKEND (tanpa localStorage)
+          try {
+            const res = await fetch("http://localhost:3000/users/register", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                fullname,
+                email,
+                phone,
+                username,
+                password,
+                role: selectedRole,
+              }),
+            });
+
+            const data = await res.json();
+
+            if (data.error) {
+              alert("Gagal mendaftar: " + data.error);
+            } else {
+              alert("Pendaftaran berhasil! Silakan login.");
+              window.location.href = "login.html";
+            }
+          } catch (err) {
+            console.error(err);
+            alert("Terjadi kesalahan koneksi ke server.");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

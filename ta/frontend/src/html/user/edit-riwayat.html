@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Riwayat - SUMTOUR</title>
+  <link rel="stylesheet" href="../../css/tambah-riwayat.css">
+</head>
+<body>
+    <header>
+      <div class="container header-container">
+        <div class="logo">
+          <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIwIDBDOC45NTQgMCAwIDguOTU0IDAgMjBTOC45NTQgNDAgMjAgNDBTNDAgMzEuMDQ2IDQwIDIwUzMxLjA0NiAwIDIwIDBaIiBmaWxsPSIjMzQ5OGRiIi8+CjxwYXRoIGQ9Ik0xNiAxNkgyNFYyNEgxNlYxNloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yNCAyNEgyNlYyNkgyNFYyNFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yNiAyNkgyOFYyOEgyNlYyNloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yOCAyOEgzMFYzMEgyOFYyOFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xNiAyNEgxNFYyNkgxNlYyNFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xNCAyNkgxMlYyOEgxNFYyNloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xMiAyOEgxMFYzMEgxMlYyOFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yNiAxNkgyOFYxOEgyNlYxNloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yOCAxOEgzMFYyMEgyOFYxOFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xNCAxNkgxNlYxOEgxNFYxNloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xMiAxOEgxNFYyMEgxMlYxOFoiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo=" alt="SUMTOUR Logo"/>
+          <h1>SUMTOUR</h1>
+        </div>
+        <nav><ul><li><a href="riwayat.html">Kembali</a></li></ul></nav>
+      </div>
+    </header>
+
+    <div class="container">
+      <h2>Edit Riwayat Perjalanan</h2>
+
+      <form id="riwayatForm">
+          <div class="form-group">
+              <label>Nama Destinasi</label>
+              <input type="text" id="nama" required>
+          </div>
+
+          <div class="form-group">
+              <label>Lokasi</label>
+              <input type="text" id="lokasi" required>
+          </div>
+
+          <div class="form-group">
+              <label>Gambar Saat Ini</label>
+              <img id="preview-gambar" style="width:200px;border-radius:10px;margin-bottom:10px">
+          </div>
+
+          <div class="form-group">
+              <label>Upload Gambar Baru (opsional)</label>
+              <input type="file" id="gambarFile" accept="image/*">
+              <span class="form-hint">Kosongkan jika tidak ingin mengubah gambar.</span>
+          </div>
+
+          <div class="form-group">
+              <label>Deskripsi</label>
+              <textarea id="deskripsi" required></textarea>
+          </div>
+
+          <div class="form-group">
+              <label>Tanggal</label>
+              <input type="date" id="tanggal">
+          </div>
+
+          <div class="form-group">
+              <label>Waktu</label>
+              <input type="time" id="waktu">
+          </div>
+
+          <button type="submit">Simpan Perubahan</button>
+      </form>
+    </div>
+
+    <script>
+        const token = localStorage.getItem("token");
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get("id"); // ?id=xxxx
+
+        // ===============================
+        // LOAD DATA LAMA KE FORM
+        // ===============================
+        async function loadData() {
+            const res = await fetch(`http://localhost:3000/riwayat/${id}`, {
+                headers: { "Authorization": "Bearer " + token }
+            });
+            const data = await res.json();
+
+            const item = data.data;
+
+            document.getElementById("nama").value = item.nama;
+            document.getElementById("lokasi").value = item.lokasi;
+            document.getElementById("deskripsi").value = item.deskripsi;
+
+            document.getElementById("tanggal").value = item.tanggal || "";
+            document.getElementById("waktu").value = item.waktu || "";
+
+            // tampilkan gambar lama
+            const url = `http://localhost:3000/images_riwayat/${item.gambar}`;
+            document.getElementById("preview-gambar").src = url;
+        }
+
+        loadData();
+
+        // ===============================
+        // SUBMIT UPDATE
+        // ===============================
+        document.getElementById("riwayatForm").addEventListener("submit", async function(e) {
+            e.preventDefault();
+
+            const nama = document.getElementById("nama").value;
+            const lokasi = document.getElementById("lokasi").value;
+            const deskripsi = document.getElementById("deskripsi").value;
+            const tanggal = document.getElementById("tanggal").value;
+            const waktu = document.getElementById("waktu").value;
+
+            const gambarBaru = document.getElementById("gambarFile").files[0];
+
+            const formData = new FormData();
+            formData.append("nama", nama);
+            formData.append("lokasi", lokasi);
+            formData.append("deskripsi", deskripsi);
+            formData.append("tanggal", tanggal);
+            formData.append("waktu", waktu);
+
+            // hanya append gambar jika user memilih gambar baru
+            if (gambarBaru) {
+                formData.append("gambar", gambarBaru);
+            }
+
+            const res = await fetch(`http://localhost:3000/riwayat/${id}`, {
+                method: "PUT",
+                headers: {
+                    "Authorization": "Bearer " + token
+                },
+                body: formData
+            });
+
+            const data = await res.json();
+            if (!res.ok) return alert("Error: " + data.error);
+
+            alert("Riwayat berhasil diperbarui!");
+            window.location.href = "riwayat.html";
+        });
+    </script>
+
+</body>
+</html>

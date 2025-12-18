@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard - SUMTOUR</title>
+    <link rel="stylesheet" href="../../css/admin-dashboard.css" />
+  </head>
+  <body>
+    <!-- Admin Header -->
+    <header class="admin-header">
+      <div class="container header-container">
+        <div class="logo">
+          <img
+            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIwIDBDOC45NTQgMCAwIDguOTU0IDAgMjBTOC45NTQgNDAgMjAgNDBTNDAgMzEuMDQ2IDQwIDIwUzMxLjA0NiAwIDIwIDBaIiBmaWxsPSIjMzQ5OGRiIi8+CjxwYXRoIGQ9Ik0xNiAxNkgyNFYyNEgxNlYxNloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yNCAyNEgyNlYyNkgyNFYyNFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yNiAyNkgyOFYyOEgyNlYyNloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yOCAyOEgzMFYzMEgyOFYyOFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xNiAyNEgxNFYyNkgxNlYyNFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xNCAyNkgxMlYyOEgxNFYyNloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xMiAyOEgxMFYzMEgxMlYyOFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yNiAxNkgyOFYxOEgyNlYxNloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yOCAxOEgzMFYyMEgyOFYxOFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xNCAxNkgxNlYxOEgxNFYxNloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xMiAxOEgxNFYyMEgxMlYxOFoiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo="
+            alt="SUMTOUR Logo"
+          />
+          <h1>SUMTOUR Admin</h1>
+        </div>
+        <div class="admin-info">
+          <span class="admin-welcome" id="adminWelcome">Halo, Admin!</span>
+          <button class="logout-btn" onclick="logout()">Logout</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+      <div class="container">
+        <!-- Stats Cards -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-number"></div>
+            <div class="stat-label">Total Destinasi</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number"></div>
+            <div class="stat-label">Tour Guide</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number"></div>
+            <div class="stat-label">Pengguna</div>
+          </div>
+        </div>
+
+        <!-- Kelola Data Wisata -->
+        <div class="management-section">
+          <div class="section-header">
+            <h2 class="section-title">Kelola Data Wisata</h2>
+            <button class="add-btn" onclick="tambahDestinasi()">+ Tambah Destinasi</button>
+          </div>
+
+          <div class="search-bar">
+            <input type="text" class="search-input" placeholder="Cari destinasi..." id="searchDestinasi" />
+            <button class="search-btn" onclick="cariDestinasi()">Cari</button>
+          </div>
+
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Nama</th>
+                <th>Lokasi</th>
+                <th>Kategori</th>
+                <th>Biaya</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="destinasiTableBody"></tbody>
+          </table>
+        </div>
+
+        <!-- Kelola Tour Guide -->
+        <div class="management-section">
+          <div class="section-header">
+            <h2 class="section-title">Kelola Tour Guide</h2>
+            <button class="add-btn" onclick="tambahGuide()">+ Tambah Guide</button>
+          </div>
+
+          <div class="search-bar">
+            <input type="text" class="search-input" placeholder="Cari tour guide..." id="searchGuide" />
+            <button class="search-btn" onclick="cariGuide()">Cari</button>
+          </div>
+
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Nama</th>
+                <th>Spesialisasi</th>
+                <th>Rating</th>
+                <th>Pengalaman</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Ahmad Rizki</td>
+                <td>Wisata Alam</td>
+                <td>⭐ 4.8</td>
+                <td>5 tahun</td>
+                <td class="action-buttons">
+                  <button class="btn-view" onclick="lihatGuide(1)">👁 View</button>
+                  <button class="btn-edit" onclick="editGuide(1)">✏ Edit</button>
+                  <button class="btn-delete" onclick="hapusGuide(1)">🗑 Delete</button>
+                </td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Sari Dewi</td>
+                <td>Wisata Budaya</td>
+                <td>⭐ 4.9</td>
+                <td>3 tahun</td>
+                <td class="action-buttons">
+                  <button class="btn-view" onclick="lihatGuide(2)">👁 View</button>
+                  <button class="btn-edit" onclick="editGuide(2)">✏ Edit</button>
+                  <button class="btn-delete" onclick="hapusGuide(2)">🗑 Delete</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="admin-footer">
+      <div class="container footer-content">
+        <p>&copy; 2025 SUMTOUR Admin Dashboard. All rights reserved.</p>
+      </div>
+    </footer>
+    <script>
+      const token = localStorage.getItem("token");
+
+      // Jika tidak ada token → tendang
+      if (!token) {
+        alert("Anda harus login terlebih dahulu!");
+        window.location.href = "../auth/login.html";
+      }
+
+      // Validasi token + ambil data admincekd
+      async function validateAdmin() {
+          try {
+              const res = await fetch("http://localhost:3000/admin/data", {
+                  method: "GET",
+                  headers: { Authorization: `Bearer ${token}` },
+              });
+
+              if (res.status === 403) {
+                  alert("Anda bukan admin!");
+                  window.location.href = "../auth/login.html";
+                  return;
+              }
+
+              if (!res.ok) {
+                  alert("Token tidak valid atau kadaluarsa!");
+                  window.location.href = "../auth/login.html";
+                  return;
+              }
+
+              const data = await res.json();
+              console.log("Admin terverifikasi:", data);
+
+              if (data.admin && data.admin.username) {
+                  document.getElementById("adminWelcome").textContent =
+                      `Halo, ${data.admin.username}!`;
+              }
+
+          } catch (err) {
+              console.error(err);
+              alert("Gagal menghubungi server!");
+              window.location.href = "../auth/login.html";
+          }
+      }
+
+      validateAdmin();
+
+      // Logout
+      function logout() {
+          if (confirm("Yakin ingin logout?")) {
+              localStorage.removeItem("isLoggedIn");
+              localStorage.removeItem("user_role");
+              localStorage.removeItem("username");
+              localStorage.removeItem("admin_logged_in");
+              alert("Logout berhasil!");
+              window.location.href = "../index.html";
+          }
+      }
+
+      // ====== Fitur Dashboard Dinamis ======
+
+      // 1️⃣ Ambil jumlah total destinasi, tour guide, pengguna
+      async function loadStats() {
+          try {
+              const res = await fetch("http://localhost:3000/admin/stats", {
+                  headers: { Authorization: `Bearer ${token}` }
+              });
+              if (!res.ok) throw new Error("Gagal mengambil data statistik");
+              const stats = await res.json();
+
+              // Update angka di dashboard
+              document.querySelector(".stats-grid .stat-card:nth-child(1) .stat-number").textContent = stats.totalDestinasi || 0;
+              document.querySelector(".stats-grid .stat-card:nth-child(2) .stat-number").textContent = stats.totalGuide || 0;
+              document.querySelector(".stats-grid .stat-card:nth-child(3) .stat-number").textContent = stats.totalUser || 0;
+
+          } catch (err) {
+              console.error(err);
+          }
+      }
+
+      // 2️⃣ Load daftar destinasi
+      async function loadDestinasi(keyword = "") {
+      try {
+        let url = `http://localhost:3000/destinasi/all`;
+        if (keyword) url += `?search=${encodeURIComponent(keyword)}`;
+
+        const res = await fetch(url, { headers: { Authorization: `Bearer ${token}` } });
+        if (!res.ok) throw new Error("Gagal mengambil data destinasi");
+
+        const response = await res.json();
+        const destinasiList = response.data; // ✅ ambil array dari property data
+
+        const tbody = document.querySelector("#destinasiTableBody");
+        tbody.innerHTML = "";
+
+        destinasiList.forEach((dest, index) => {
+            const biayaTotal = Number(dest.biaya?.tiket || 0) + Number(dest.biaya?.transportasi || 0) + Number(dest.biaya?.makanan || 0);
+            const biayaText = biayaTotal === 0 ? "Gratis" : `Rp ${biayaTotal.toLocaleString("id-ID")}`;
+
+            const tr = document.createElement("tr");
+            tr.innerHTML = `
+                <td>${index + 1}</td>
+                <td>${dest.nama}</td>
+                <td>${dest.lokasi}</td>
+                <td>${dest.kategori}</td>
+                <td>${biayaText}</td>
+                <td class="action-buttons">
+                    <button class="btn-view" onclick="lihatDestinasi('${dest._id}')">👁 View</button>
+                    <button class="btn-edit" onclick="editDestinasi('${dest._id}')">✏ Edit</button>
+                    <button class="btn-delete" onclick="hapusDestinasi('${dest._id}')">🗑 Delete</button>
+                </td>
+            `;
+            tbody.appendChild(tr);
+        });
+      } catch (err) {
+        console.error(err);
+      }
+  }
+
+      // 3️⃣ Fungsi view, edit, deleteeee
+      function lihatDestinasi(id) {
+          alert("Melihat detail destinasi ID: " + id);
+          window.location.href = `../destinasi/destinasi-detail.html?id=${id}`;
+      }
+
+      function editDestinasi(id) {
+          window.location.href = `edit-destinasi.html?id=${id}`;
+      }
+
+      async function hapusDestinasi(id) {
+          if (!confirm("Apakah Anda yakin ingin menghapus destinasi ini?")) return;
+          try {
+              const res = await fetch(`http://localhost:3000/destinasi/${id}`, {
+                  method: "DELETE",
+                  headers: { Authorization: `Bearer ${token}` }
+              });
+              if (!res.ok) throw new Error("Gagal menghapus destinasi");
+              alert("Destinasi berhasil dihapus!");
+              loadDestinasi(); // refresh tabel
+          } catch (err) {
+              console.error(err);
+              alert("Gagal menghapus destinasi!");
+          }
+      }
+
+      // 4️⃣ Cari destinasi
+      function cariDestinasi() {
+          const keyword = document.getElementById("searchDestinasi").value;
+          loadDestinasi(keyword);
+      }
+
+      // 5️⃣ Tombol tambah destinasi
+      function tambahDestinasi() {
+          window.location.href = "tambah-destinasi.html";
+      }
+
+      // ===== Inisialisasi =====
+      loadStats();
+      loadDestinasi();
+    </script>
+  </body>
+</html>

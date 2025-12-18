@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tambah Destinasi - SUMTOUR Admin</title>
+  <link rel="stylesheet" href="../../css/tambah-destinasi.css" />
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet" />
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
+</head>
+<body>
+    <!-- Admin Header -->
+    <header class="admin-header">
+      <div class="container header-container">
+        <div class="logo">
+          <img
+            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIwIDBDOC45NTQgMCAwIDguOTU0IDAgMjBTOC45NTQgNDAgMjAgNDBTNDAgMzEuMDQ2IDQwIDIwUzMxLjA0NiAwIDIwIDBaIiBmaWxsPSIjMzQ5OGRiIi8+CjxwYXRoIGQ9Ik0xNiAxNkgyNFYyNEgxNlYxNloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yNCAyNEgyNlYyNkgyNFYyNFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yNiAyNkgyOFYyOEgyNlYyNloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yOCAyOEgzMFYzMEgyOFYyOFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xNiAyNEgxNFYyNkgxNlYyNFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xNCAyNkgxMlYyOEgxNFYyNloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xMiAyOEgxMFYzMEgxMlYyOFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yNiAxNkgyOFYxOEgyNlYxNloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yOCAxOEgzMFYyMEgyOFYxOFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xNCAxNkgxNlYxOEgxNFYxNloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xMiAxOEgxNFYyMEgxMlYxOFoiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo="
+            alt="SUMTOUR Logo"
+          />
+          <h1>SUMTOUR Admin</h1>
+        </div>
+        <div class="admin-info">
+          <span class="admin-welcome" id="adminWelcome">Tambah Destinasi</span>
+        </div>
+      </div>
+    </header>
+
+  <!-- ========== MAIN CONTAINER ========== -->
+  <main class="admin-main">
+    <div class="container">
+      <div class="form-container">
+        <h2 class="form-title">Form Tambah Destinasi Wisata</h2>
+        
+        <form id="formDestinasi" enctype="multipart/form-data">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="nama">Nama Destinasi <span class="required">*</span></label>
+              <input type="text" id="nama" placeholder="Contoh: Jam Gadang Bukittinggi" required />
+              <span class="form-hint">Masukkan nama destinasi wisata</span>
+            </div>
+
+            <div class="form-group">
+              <label for="lokasi">Lokasi <span class="required">*</span></label>
+              <input type="text" id="lokasi" placeholder="Contoh: Bukittinggi, Sumatera Barat" required />
+              <span class="form-hint">Kota/Kabupaten dan provinsi</span>
+            </div>
+
+            <div class="form-group">
+              <label for="kategori">Kategori <span class="required">*</span></label>
+              <select id="kategori" required>
+                <option value="">-- Pilih Kategori --</option>
+                <option value="Alam">Wisata Alam</option>
+                <option value="Budaya">Wisata Budaya</option>
+                <option value="Kuliner">Wisata Kuliner</option>
+                <option value="Sejarah">Wisata Sejarah</option>
+                <option value="Religi">Wisata Religi</option>
+              </select>
+              <span class="form-hint">Pilih kategori destinasi</span>
+            </div>
+
+            <div class="form-group">
+              <label>Biaya (Rp)</label>
+              <div class="biaya-grid">
+                <div>
+                  <label for="biaya_tiket" style="font-size: 12px;">Tiket Masuk</label>
+                  <input type="number" id="biaya_tiket" placeholder="0" min="0" />
+                </div>
+                <div>
+                  <label for="biaya_transportasi" style="font-size: 12px;">Transportasi</label>
+                  <input type="number" id="biaya_transportasi" placeholder="0" min="0" />
+                </div>
+                <div>
+                  <label for="biaya_makanan" style="font-size: 12px;">Makanan</label>
+                  <input type="number" id="biaya_makanan" placeholder="0" min="0" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="deskripsi">Deskripsi Destinasi</label>
+            <textarea id="deskripsi" rows="5" placeholder="Deskripsikan keunikan, fasilitas, dan daya tarik destinasi ini..."></textarea>
+            <span class="form-hint">Minimal 50 karakter untuk deskripsi yang lengkap</span>
+          </div>
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="gambarInput">Gambar Destinasi</label>
+              <div class="image-input-container">
+                <div class="image-input-group">
+                  <input type="file" id="gambarInput" style="width: 450px;" name="gambar" accept="image/*" />
+                  <span>Upload gambar</span>
+                </div>
+                <div>
+                  <label for="gambarUrl" style="font-size: 12px;">Atau masukkan URL gambar:</label>
+                  <input type="text" id="gambarUrl" style="width: 450px;" placeholder="https://example.com/gambar.jpg" />
+                </div>
+              </div>
+              <span class="form-hint">Format: JPG, PNG, maks 5MB. Rasio 16:9 disarankan</span>
+            </div>
+
+            <div class="form-group">
+              <label>Koordinat Lokasi</label>
+              <div class="coord-grid">
+                <div>
+                  <input type="number" step="0.000001" id="latitude" placeholder="-0.894041" />
+                  <label for="latitude" style="font-size: 12px;">Latitude</label>
+                </div>
+                <div>
+                  <input type="number" step="0.000001" id="longitude" placeholder="100.366554" />
+                  <label for="longitude" style="font-size: 12px;">Longitude</label>
+                </div>
+              </div>
+              <span class="form-hint">Koordinat untuk peta. Contoh: -0.894041, 100.366554</span>
+            </div>
+          </div>
+          <!-- maps -->
+          <div id="map" style="width: 100%; height: 400px; margin-top: 10px;" ></div>
+
+          <div class="button-group">
+            <button type="button" class="btn-secondary" onclick="window.location.href='admin-dashboard.html'">
+              Kembali
+            </button>
+            <button type="submit" class="btn-primary">
+              Simpan Destinasi
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+    <footer class="admin-footer">
+      <div class="container footer-content">
+        <p>&copy; 2025 SUMTOUR Admin Dashboard. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+        // Cek token login
+        const token = localStorage.getItem("token");
+        if (!token) {
+            alert("Anda harus login terlebih dahulu!");
+            window.location.href = "../auth/login.html";
+        }
+
+        // Handle form submission
+        document.getElementById("formDestinasi").addEventListener("submit", async function (e) {
+          e.preventDefault();
+
+          // Validasi form
+          const nama = document.getElementById("nama").value.trim();
+          const lokasi = document.getElementById("lokasi").value.trim();
+          const kategori = document.getElementById("kategori").value;
+          
+          if (!nama || !lokasi || !kategori) {
+              alert("Harap lengkapi semua field yang wajib diisi!");
+              return;
+          }
+
+          // Tampilkan loading
+          const submitBtn = e.target.querySelector('button[type="submit"]');
+          const originalText = submitBtn.textContent;
+          submitBtn.textContent = "Menyimpan...";
+          submitBtn.disabled = true;
+
+          try {
+              // BUAT FORMDATA
+              const formData = new FormData();
+              formData.append('nama', nama);
+              formData.append('lokasi', lokasi);
+              formData.append('kategori', kategori);
+              formData.append('deskripsi', document.getElementById("deskripsi").value.trim());
+              formData.append('gambarUrl', document.getElementById("gambarUrl").value.trim());
+              formData.append('biaya_tiket', document.getElementById("biaya_tiket").value || 0);
+              formData.append('biaya_transportasi', document.getElementById("biaya_transportasi").value || 0);
+              formData.append('biaya_makanan', document.getElementById("biaya_makanan").value || 0);
+              formData.append('latitude', document.getElementById("latitude").value || '');
+              formData.append('longitude', document.getElementById("longitude").value || '');
+
+              // Tambah file jika ada
+              const fileInput = document.getElementById('gambarInput');
+              if (fileInput.files[0]) {
+                  // Validasi ukuran file (maks 5MB)
+                  if (fileInput.files[0].size > 5 * 1024 * 1024) {
+                      alert("Ukuran gambar maksimal 5MB!");
+                      submitBtn.textContent = originalText;
+                      submitBtn.disabled = false;
+                      return;
+                  }
+                  formData.append('gambar', fileInput.files[0]);
+              }
+
+              // Kirim dengan FormData
+              const res = await fetch("http://localhost:3000/destinasi/add", {
+                  method: "POST",
+                  headers: {
+                      Authorization: `Bearer ${token}`,  // ← SEKARANG token ADA
+                  },
+                  body: formData
+              });
+
+              const result = await res.json();
+
+              if (res.ok) {
+                  alert("Destinasi berhasil ditambahkan!");
+                  window.location.href = "admin-dashboard.html";
+              } else {
+                  alert("Gagal: " + (result.error || "Terjadi kesalahan"));
+              }
+          } catch (error) {
+              console.error("Error:", error);
+              alert("Terjadi kesalahan jaringan atau server!");
+          } finally {
+              submitBtn.textContent = originalText;
+              submitBtn.disabled = false;
+          }
+      });
+      
+      // Inisialisasi peta mapbox
+      mapboxgl.accessToken = 'pk.eyJ1IjoiZmxvcmVuc2l1cyIsImEiOiJjbWg3c3c5YzcwcTdyMnhwdTVreW1qdXRsIn0.LmgVCoaMP5r1SRvnvVggrQ';
+
+      const map = new mapboxgl.Map({
+          container: 'map',
+          style: 'mapbox://styles/mapbox/satellite-streets-v12',
+          center: [100.366554, -0.894041],
+          zoom: 12
+      });
+
+      // Marker GLOBAL (supaya bisa dipindah)
+      let marker = new mapboxgl.Marker({ draggable: true })
+          .setLngLat([100.366554, -0.894041])
+          .addTo(map);
+
+      // Update input ketika marker digeser
+      marker.on('dragend', updateInputs);
+
+      function updateInputs() {
+          const lngLat = marker.getLngLat();
+          document.getElementById('latitude').value = lngLat.lat.toFixed(6);
+          document.getElementById('longitude').value = lngLat.lng.toFixed(6);
+      }
+
+      // ====================================================
+      // ✔ FITUR BARU: Marker muncul/pindah saat klik peta
+      // ====================================================
+      map.on('click', function (e) {
+          const lat = e.lngLat.lat;
+          const lng = e.lngLat.lng;
+
+          // Pindahkan marker ke lokasi klik
+          marker.setLngLat([lng, lat]);
+
+          // Update input form
+          document.getElementById('latitude').value = lat.toFixed(6);
+          document.getElementById('longitude').value = lng.toFixed(6);
+      });
+
+      // ====================================================
+      // Update marker jika user input manual di field
+      // ====================================================
+      document.getElementById('latitude').addEventListener('change', updateMarker);
+      document.getElementById('longitude').addEventListener('change', updateMarker);
+
+      function updateMarker() {
+          const lat = parseFloat(document.getElementById('latitude').value);
+          const lng = parseFloat(document.getElementById('longitude').value);
+
+          if (!isNaN(lat) && !isNaN(lng)) {
+              marker.setLngLat([lng, lat]);
+              map.setCenter([lng, lat]);
+          }
+      }
+    </script>
+</body>
+</html>

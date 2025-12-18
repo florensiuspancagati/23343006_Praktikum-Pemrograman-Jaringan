@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tour Guide Dashboard - SUMTOUR</title>
+    <link rel="stylesheet" href="../../css/guide-dashboard.css" />
+  </head>
+  <body>
+    <!-- Guide Header -->
+    <header class="guide-header">
+      <div class="container header-container">
+        <div class="logo">
+          <img
+            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIwIDBDOC45NTQgMCAwIDguOTU0IDAgMjBTOC45NTQgNDAgMjAgNDBTNDAgMzEuMDQ2IDQwIDIwUzMxLjA0NiAwIDIwIDBaIiBmaWxsPSIjMzQ5OGRiIi8+CjxwYXRoIGQ9Ik0xNiAxNkgyNFYyNEgxNlYxNloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yNCAyNEgyNlYyNkgyNFYyNFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yNiAyNkgyOFYyOEgyNlYyNloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yOCAyOEgzMFYzMEgyOFYyOFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xNiAyNEgxNFYyNkgxNlYyNFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xNCAyNkgxMlYyOEgxNFYyNloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xMiAyOEgxMFYzMEgxMlYyOFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yNiAxNkgyOFYxOEgyNlYxNloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yOCAxOEgzMFYyMEgyOFYxOFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xNCAxNkgxNlYxOEgxNFYxNloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xMiAxOEgxNFYyMEgxMlYxOFoiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo="
+            alt="SUMTOUR Logo"
+          />
+          <h1>SUMTOUR Guide</h1>
+        </div>
+        <div class="guide-info">
+          <span class="guide-welcome" id="guideWelcome">Halo, Guide!</span>
+          <button class="logout-btn" onclick="logout()">Logout</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="guide-main">
+      <div class="container">
+
+        <!-- Profile Section -->
+        <div class="profile-section">
+          <div class="profile-header">
+            <img id="profilePhoto"
+              src="https://images.unsplash.com/photo-1507003211169..."
+              class="profile-photo"
+            />
+
+            <div class="profile-info">
+              <h2 id="profileName">Nama Guide</h2>
+              <p class="specialization" id="profileSpecialization">-</p>
+
+              <div class="rating">
+                <span class="stars">★★★★★</span>
+                <span>4.8/5.0 (127 reviews)</span>
+              </div>
+
+              <span class="status-badge status-available">Tersedia</span>
+            </div>
+          </div>
+
+          <div class="profile-details">
+            <div class="detail-item">
+              <div class="detail-label">Pengalaman</div>
+              <div class="detail-value" id="profileExperience">-</div>
+            </div>
+            <div class="detail-item">
+              <div class="detail-label">Bahasa</div>
+              <div class="detail-value" id="profileLanguages">-</div>
+            </div>
+            <div class="detail-item">
+              <div class="detail-label">Spesialisasi</div>
+              <div class="detail-value" id="profileSpecialization2">-</div>
+            </div>
+            <div class="detail-item">
+              <div class="detail-label">Lokasi</div>
+              <div class="detail-value" id="profileLocation">-</div>
+            </div>
+            <div class="detail-item">
+              <div class="detail-label">Email</div>
+              <div class="detail-value" id="profileEmail">-</div>
+            </div>
+            <div class="detail-item">
+              <div class="detail-label">Telepon</div>
+              <div class="detail-value" id="profilePhone">-</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Jadwal Tour Static (TIDAK DIUBAH) -->
+        <div class="management-section">
+          <div class="section-header">
+            <h2 class="section-title">Jadwal Tour Mendatang</h2>
+            <button class="add-btn">+ Tambah Jadwal</button>
+          </div>
+
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>No</th><th>Tanggal</th><th>Nama Tur</th>
+                <th>Lokasi</th><th>Jumlah Peserta</th><th>Status</th><th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Tetap static -->
+              <tr>
+                <td>1</td><td>15 Des 2024</td><td>Tour Lembah Harau</td>
+                <td>Payakumbuh</td><td>8 Orang</td>
+                <td><span class="status-badge status-available">Dikonfirmasi</span></td>
+                <td><button class="btn-view">👁</button><button class="btn-edit">✏</button></td>
+              </tr>
+
+              <tr>
+                <td>2</td><td>18 Des 2024</td><td>Wisata Budaya Minang</td>
+                <td>Bukittinggi</td><td>12 Orang</td>
+                <td><span class="status-badge status-available">Dikonfirmasi</span></td>
+                <td><button class="btn-view">👁</button><button class="btn-edit">✏</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Riwayat Static -->
+        <div class="management-section">
+          <div class="section-header">
+            <h2 class="section-title">Riwayat Tour</h2>
+          </div>
+
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>No</th><th>Tanggal</th><th>Nama Tur</th>
+                <th>Lokasi</th><th>Peserta</th><th>Rating</th><th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td><td>10 Des 2024</td><td>Danau Maninjau</td>
+                <td>Agam</td><td>10 Orang</td><td>⭐ 5.0</td>
+                <td><button class="btn-view">👁</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Kelola Profil (UPDATE DATA GUIDE) -->
+        <div class="management-section">
+          <div class="section-header">
+            <h2 class="section-title">Kelola Profil</h2>
+          </div>
+          <form id="profileForm">
+            <div class="form-group">
+              <label for="fullname">Nama Lengkap</label>
+              <input type="text" id="fullname" class="form-control"/>
+            </div>
+
+            <div class="form-group">
+              <label for="specialization">Spesialisasi</label>
+              <input type="text" id="specialization" class="form-control"/>
+            </div>
+
+            <div class="form-group">
+              <label for="experience">Pengalaman (Tahun)</label>
+              <input type="number" id="experience" class="form-control"/>
+            </div>
+
+            <div class="form-group">
+              <label for="languages">Bahasa yang Dikuasai</label>
+              <input type="text" id="bahasa" class="form-control"/>
+            </div>
+
+            <div class="form-group">
+              <label for="location">Lokasi</label>
+              <input type="text" id="lokasi" class="form-control"/>
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Nomor Telepon</label>
+              <input type="tel" id="phone" class="form-control"/>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" class="form-control"/>
+            </div>
+
+            <div class="form-group">
+              <label for="photo">Foto Profil</label>
+              <input type="file" id="photo" accept="image/*" class="form-control" />
+            </div>
+
+            <button type="submit" class="add-btn">Update Profil</button>
+          </form>
+        </div>
+      </div>
+    </main>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <footer class="guide-footer">
+      <div class="container footer-content">
+        <p>&copy; 2025 SUMTOUR Guide Dashboard. All rights reserved.</p>
+      </div>
+    </footer>
+     <script>
+      let guideId = "";
+      let userId = "";
+
+      function parseJwt(token) {
+        try {
+          return JSON.parse(atob(token.split('.')[1]));
+        } catch (e) {
+          return null;
+        }
+      }
+
+      async function loadGuideData() {
+        const token = localStorage.getItem("token");
+        if (!token) {
+          alert("Silahkan login terlebih dahulu");
+          window.location.href = "../auth/login.html";
+          return;
+        }
+
+        const payload = parseJwt(token);
+        userId = payload.id;
+
+        // Perbaikan URL fetch
+        const res = await fetch(`http://localhost:3000/guides/user/${userId}`, {
+          headers: { "Authorization": "Bearer " + token }
+        });
+
+        const result = await res.json();
+        if (!result.success) {
+          alert("Data guide tidak ditemukan");
+          return;
+        }
+
+        const g = result.data;
+        guideId = g._id;
+
+        // Tampilkan data
+        document.getElementById("profileName").textContent = g.fullname;
+        document.getElementById("profileSpecialization").textContent = g.spesialisasi || "-";
+        document.getElementById("profileSpecialization2").textContent = g.spesialisasi || "-";
+        document.getElementById("profileExperience").textContent = g.pengalaman ? `${g.pengalaman} Tahun` : "-";
+        document.getElementById("profileLanguages").textContent = g.bahasa || "-";
+        document.getElementById("profileLocation").textContent = g.lokasi || "-";
+        document.getElementById("profileEmail").textContent = g.email;
+        document.getElementById("profilePhone").textContent = g.phone;
+
+        if (g.foto) {
+          document.getElementById("profilePhoto").src = "http://localhost:3000/images_guide/" + g.foto;
+        }
+
+        // Masukkan ke form
+        fullname.value = g.fullname;
+        specialization.value = g.spesialisasi || "";
+        experience.value = g.pengalaman || "";
+        bahasa.value = g.bahasa || "";
+        lokasi.value = g.lokasi || "";
+        phone.value = g.phone;
+        email.value = g.email;
+      }
+
+      document.addEventListener("DOMContentLoaded", loadGuideData);
+
+      // Perbaiki form submit handler:
+      document.getElementById("profileForm").addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const token = localStorage.getItem("token");
+        
+        // Gunakan userId, bukan guideId
+        const payload = parseJwt(token);
+        const userId = payload.id;
+        
+        const formData = new FormData();
+        
+        // User fields
+        formData.append("fullname", fullname.value);
+        formData.append("phone", phone.value);
+        formData.append("email", email.value);
+
+        // Guide fields - perhatikan nama field
+        formData.append("spesialisasi", specialization.value);
+        formData.append("pengalaman", experience.value);
+        formData.append("bahasa", bahasa.value);
+        formData.append("lokasi", lokasi.value);
+        
+        // PERUBAHAN PENTING: gunakan nama field yang sesuai dengan route
+        if (photo.files.length > 0) {
+          formData.append("photo", photo.files[0]); 
+        }
+
+        try {
+          // Gunakan userId, bukan guideId
+          const res = await fetch(`http://localhost:3000/guides/${userId}`, {
+            method: "PUT",
+            headers: {
+              "Authorization": "Bearer " + token
+            },
+            body: formData,
+          });
+
+          let result;
+          try {
+            result = await res.json();
+          } catch {
+            const text = await res.text();
+            console.error("Response bukan JSON:", text);
+            alert("Terjadi error di server saat update profil");
+            return;
+          }
+
+          if (result.success) {
+            alert("Profil berhasil diperbarui!");
+            loadGuideData();
+          } else {
+            alert("Gagal update profil: " + (result.error || result.message));
+          }
+        } catch (err) {
+          console.error(err);
+          alert("Terjadi error saat request ke server");
+        }
+      });
+
+
+      function logout() {
+        localStorage.clear();
+        window.location.href = "../auth/login.html";
+      }
+    </script>
+  </body>
+</html>

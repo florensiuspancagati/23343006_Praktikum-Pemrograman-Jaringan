@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - SUMTOUR</title>
+    <link rel="stylesheet" href="../../css/login.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container header-container">
+        <div class="logo">
+          <img
+            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIwIDBDOC45NTQgMCAwIDguOTU0IDAgMjBTOC45NTQgNDAgMjAgNDBTNDAgMzEuMDQ2IDQwIDIwUzMxLjA0NiAwIDIwIDBaIiBmaWxsPSIjMzQ5OGRiIi8+CjxwYXRoIGQ9Ik0xNiAxNkgyNFYyNEgxNlYxNloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yNCAyNEgyNlYyNkgyNFYyNFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yNiAyNkgyOFYyOEgyNlYyNloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yOCAyOEgzMFYzMEgyOFYyOFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xNiAyNEgxNFYyNkgxNlYyNFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xNCAyNkgxMlYyOEgxNFYyNloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xMiAyOEgxMFYzMEgxMlYyOFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yNiAxNkgyOFYxOEgyNlYxNloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yOCAxOEgzMFYyMEgyOFYxOFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xNCAxNkgxNlYxOEgxNFYxNloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xMiAxOEgxNFYyMEgxMlYxOFoiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo="
+            alt="SUMTOUR Logo"
+          />
+          <h1>SUMTOUR</h1>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="../index.html">Beranda</a></li>
+            <li><a href="../destinasi/destinasi.html">Destinasi</a></li>
+            <li><a href="../guide/tour-guide.html">Tour Guide</a></li>
+            <li><a href="../user/riwayat.html">Riwayat</a></li>
+            <li><a href="../tentang.html">Tentang</a></li>
+          </ul>
+        </nav>
+        <div class="user-actions">
+          <a href="register.html">Daftar</a>
+          <a href="login.html" style="color: #3498db">Masuk</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <div class="container">
+        <div class="auth-container">
+          <div class="auth-card">
+            <!-- Judul Besar "Login" -->
+            <h1 class="auth-title">Login</h1>
+
+            <!-- Form Login Sederhana -->
+            <form id="loginForm">
+              <!-- Role Selection -->
+              <div class="role-selection">
+                <label>Login Sebagai:</label>
+                <div class="role-options">
+                  <div class="role-option selected" data-role="user">User</div>
+                  <div class="role-option" data-role="admin">Admin</div>
+                  <div class="role-option" data-role="guide">Tour Guide</div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" class="form-control" placeholder="Masukkan username" required />
+              </div>
+
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" class="form-control" placeholder="Masukkan password" required />
+              </div>
+
+              <!-- Tombol Login Berukuran Penuh -->
+              <button type="submit" class="auth-btn">Login</button>
+            </form>
+
+            <!-- Link ke Halaman Register -->
+            <div class="auth-link">
+              <p>
+                Belum punya akun?
+                <a href="register.html">Daftar di sini</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-column">
+            <h3>Tentang SUMTOUR</h3>
+            <p>SUMTOUR adalah platform rekomendasi wisata di Sumatera Barat yang membantu wisatawan menemukan destinasi terbaik sesuai minat mereka.</p>
+            <div class="social-links">
+              <a href="#"><span>FB</span></a>
+              <a href="#"><span>IG</span></a>
+              <a href="#"><span>TW</span></a>
+              <a href="#"><span>YT</span></a>
+            </div>
+          </div>
+          <div class="footer-column">
+            <h3>Kontak Kami</h3>
+            <p><span>📍</span> Jl. Prof. Dr. Hamka, Air Tawar Barat, Padang Utara, Kota Padang</p>
+            <p><span>📞</span> +62 813 7412 8445</p>
+            <p><span>✉️</span> sumtour@gmail.com</p>
+          </div>
+          <div class="footer-column">
+            <h3>Link Cepat</h3>
+            <a href="../index.html">Beranda</a>
+            <a href="../destinasi/destinasi.html">Destinasi Wisata</a>
+            <a href="../guide/tour-guide.html">Tour Guide</a>
+            <a href="../user/riwayat.html">Riwayat Saya</a>
+            <a href="../tentang.html">Tentang Kami</a>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>&copy; 2025 SUMTOUR - Web Aplikasi Rekomendasi Wisata di Sumatera Barat. All rights reserved.</p>
+          <p>Disusun oleh: Florensius Panca Gati (23343006) & Meli Fitri Zamili (23343010)</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Role Selection
+      document.addEventListener("DOMContentLoaded", function () {
+        const roleOptions = document.querySelectorAll(".role-option");
+        let selectedRole = "user";
+
+        roleOptions.forEach((option) => {
+          option.addEventListener("click", function () {
+            // Remove selected class from all options
+            roleOptions.forEach((opt) => opt.classList.remove("selected"));
+            // Add selected class to clicked option
+            this.classList.add("selected");
+            // Update selected role
+            selectedRole = this.getAttribute("data-role");
+          });
+        });
+
+        // Handle form submission - VERSI DIPERBAIKI
+        document.getElementById("loginForm").addEventListener("submit", async function (e) {
+          e.preventDefault();
+
+          const username = document.getElementById("username").value;
+          const password = document.getElementById("password").value;
+
+          try {
+            const response = await fetch("http://localhost:3000/users/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    username,
+                    password,
+                    role: selectedRole
+                })
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                alert(data.error || "Login gagal!");
+                return;
+            }
+
+            // SIMPAN TOKEN
+            localStorage.setItem("token", data.token);
+            localStorage.setItem("username", data.user.username);
+            localStorage.setItem("role", data.user.role);
+            localStorage.setItem("isLoggedIn", "true");
+
+            alert("Login berhasil!");
+
+            // REDIRECT BERDASARKAN ROLE
+            if (data.user.role === "admin") window.location.href = "../admin/admin-dashboard.html";
+            else if (data.user.role === "guide") window.location.href = "../guide/guide-dashboard.html";
+            else window.location.href = "../index.html";
+
+          } catch (error) {
+            alert("Terjadi kesalahan server: " + error.message);
+          }
+        });
+      });
+
+      // Fungsi logout
+      function logout() {
+        if (confirm("Apakah Anda yakin ingin logout?")) {
+          // Hapus semua data login
+          localStorage.removeItem("token");
+          localStorage.removeItem("role");
+          localStorage.removeItem("username");
+          localStorage.setItem("isLoggedIn", "false");
+
+          // Redirect ke halaman home
+          alert("Logout berhasil!");
+          window.location.href = "../index.html";
+        }
+      }
+    </script>
+  </body>
+</html>

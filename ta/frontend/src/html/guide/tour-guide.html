@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tour Guide - SUMTOUR</title>
+    <link rel="stylesheet" href="../../css/tour-guide.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container header-container">
+        <div class="logo">
+          <img
+            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIwIDBDOC45NTQgMCAwIDguOTU0IDAgMjBTOC45NTQgNDAgMjAgNDBTNDAgMzEuMDQ2IDQwIDIwUzMxLjA0NiAwIDIwIDBaIiBmaWxsPSIjMzQ5OGRiIi8+CjxwYXRoIGQ9Ik0xNiAxNkgyNFYyNEgxNlYxNloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yNCAyNEgyNlYyNkgyNFYyNFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yNiAyNkgyOFYyOEgyNlYyNloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yOCAyOEgzMFYzMEgyOFYyOFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xNiAyNEgxNFYyNkgxNlYyNFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xNCAyNkgxMlYyOEgxNFYyNloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xMiAyOEgxMFYzMEgxMlYyOFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yNiAxNkgyOFYxOEgyNlYxNloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yOCAxOEgzMFYyMEgyOFYxOFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xNCAxNkgxNlYxOEgxNFYxNloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xMiAxOEgxNFYyMEgxMlYxOFoiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo="
+            alt="SUMTOUR Logo"
+          />
+          <h1>SUMTOUR</h1>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="../index.html">Beranda</a></li>
+            <li><a href="../destinasi/destinasi.html">Destinasi</a></li>
+            <li><a href="../guide/tour-guide.html" class="active">Tour Guide</a></li>
+            <li><a href="../user/riwayat.html">Riwayat</a></li>
+            <li><a href="../tentang.html">Tentang</a></li>
+          </ul>
+        </nav>
+        <div class="user-actions" id="userActions">
+          <!-- Akan diisi oleh JavaScript -->
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <div class="container">
+        <div class="section-title">
+          <h2>Tour Guide Profesional</h2>
+          <p>Temukan pemandu wisata berpengalaman untuk perjalanan Anda di Sumatera Barat</p>
+        </div>
+
+        <!-- Search Section -->
+        <div class="search-section">
+          <div class="search-container">
+            <div class="search-box">
+              <input type="text" id="searchInput" placeholder="Cari tour guide berdasarkan nama atau spesialisasi..." />
+            </div>
+            <button class="search-btn" onclick="searchGuides()">Cari</button>
+          </div>
+        </div>
+
+        <!-- Guide Grid -->
+        <div class="guide-grid" id="guideGrid">
+          <!-- Data guide akan diisi oleh JavaScript -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-column">
+            <h3>Tentang SUMTOUR</h3>
+            <p>SUMTOUR adalah platform rekomendasi wisata di Sumatera Barat yang membantu wisatawan menemukan destinasi terbaik sesuai minat mereka.</p>
+            <div class="social-links">
+              <a href="#"><span>FB</span></a>
+              <a href="#"><span>IG</span></a>
+              <a href="#"><span>TW</span></a>
+              <a href="#"><span>YT</span></a>
+            </div>
+          </div>
+          <div class="footer-column">
+            <h3>Kontak Kami</h3>
+            <p><span>📍</span> Jl. Prof. Dr. Hamka, Air Tawar Barat, Padang Utara, Kota Padang</p>
+            <p><span>📞</span> +62 812 3456 7890</p>
+            <p><span>✉️</span> info@sumtour.id</p>
+          </div>
+          <div class="footer-column">
+            <h3>Link Cepat</h3>
+            <a href="index.html">Beranda</a>
+            <a href="destinasi.html">Destinasi Wisata</a>
+            <a href="tour-guide.html">Tour Guide</a>
+            <a href="riwayat.html">Riwayat Saya</a>
+            <a href="tentang.html">Tentang Kami</a>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>&copy; 2025 SUMTOUR - Web Aplikasi Rekomendasi Wisata di Sumatera Barat. All rights reserved.</p>
+          <p>Disusun oleh: Florensius Panca Gati (23343006) & Meli Fitri Zamili (23343010)</p>
+        </div>
+      </div>
+    </footer>
+    <script>
+      const token = localStorage.getItem("token");
+
+      // SEMBUNYIKAN FORM DAN KONTEN JIKA BELUM LOGIN
+      const pageContainer = document.querySelector(".container"); // container utama
+      if (!token) {
+        alert("Silakan login terlebih dahulu.");
+
+        // SEMBUNYIKAN SEMUA .container KECUALI HEADER DAN FOOTER
+        document.querySelectorAll(".container").forEach(c => {
+            if (!c.closest("header") && !c.closest("footer")) {
+                c.style.display = "none";
+            }
+        });
+
+        // === BUAT PESAN LOGIN DI TENGAH HALAMAN ===
+        const loginBox = document.createElement("div");
+        loginBox.id = "login-required-box";
+        loginBox.style.cssText = `
+            text-align: center;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+            width: 400px;
+            max-width: 90%;
+            z-index: 1000;
+        `;
+
+        loginBox.innerHTML = `
+            <div style="margin-bottom: 25px;">
+                <div style="
+                    width: 70px;
+                    height: 70px;
+                    background: #f8f9fa;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin: 0 auto 20px;
+                    border: 2px solid #e9ecef;
+                ">
+                    <span style="font-size: 30px;">🔒</span>
+                </div>
+                <h2 style="margin: 0 0 10px; color: #2c3e50; font-size: 24px;">
+                    Akses Terbatas
+                </h2>
+                <p style="color: #7f8c8d; margin: 0; line-height: 1.5;">
+                    Anda harus login untuk mengakses halaman ini.
+                </p>
+            </div>
+            <button id="btnGoLogin"
+                style="
+                    padding: 12px 30px;
+                    background: linear-gradient(135deg, #3498db, #2980b9);
+                    border: none;
+                    border-radius: 8px;
+                    color: white;
+                    font-size: 16px;
+                    font-weight: 600;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    width: 100%;
+                    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+                "
+                onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(52, 152, 219, 0.4)';"
+                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(52, 152, 219, 0.3)';"
+            >
+                Login Sekarang
+            </button>
+            <p style="color: #95a5a6; font-size: 14px; margin-top: 20px;">
+                Belum punya akun? 
+                <a href="../auth/register.html" 
+                  style="color: #3498db; text-decoration: none; font-weight: 600;">
+                    Daftar di sini
+                </a>
+            </p>
+        `;
+
+        // Tambahkan overlay gelap di belakang
+        const overlay = document.createElement("div");
+        overlay.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 999;
+        `;
+
+        document.body.appendChild(overlay);
+        document.body.appendChild(loginBox);
+
+        // Event listener untuk tombol login
+        document.getElementById("btnGoLogin").onclick = () => {
+            window.location.href = "../auth/login.html";
+        };
+
+        // Optional: Klik overlay untuk close (jika diinginkan)
+        overlay.onclick = () => {
+            document.body.removeChild(overlay);
+            document.body.removeChild(loginBox);
+            document.querySelectorAll(".container").forEach(c => {
+                if (!c.closest("header") && !c.closest("footer")) {
+                    c.style.display = "";
+                }
+            });
+        };
+
+        // STOP SCRIPT LANJUTAN
+        throw new Error("User belum login");
+    }
+
+      // Data tour guide - HAPUS DATA STATIS & GANTI DENGAN FUNGSI FETCH
+      let guideData = []; // Array kosong, akan diisi dari API
+
+      // Fungsi untuk mengambil data guide dari backend
+      async function fetchGuides() {
+        const grid = document.getElementById("guideGrid");
+        grid.innerHTML = '<div class="loading-spinner"><div class="spinner"></div></div>';
+          try {
+              console.log("🔄 Mengambil data guide dari API...");
+              
+              const response = await fetch('http://localhost:3000/guides/', {
+                  method: 'GET',
+                  headers: {
+                      'Authorization': `Bearer ${token}`,
+                      'Content-Type': 'application/json'
+                  }
+              });
+              
+              if (!response.ok) {
+                  throw new Error(`HTTP error! status: ${response.status}`);
+              }
+              
+              const result = await response.json();
+              console.log("✅ Data guide diterima:", result);
+              
+              if (result.success) {
+                  // Transform data dari backend ke format frontend
+                  guideData = result.data.map(guide => {
+                      return {
+                          id: guide._id || guide.userId?._id,
+                          nama: guide.userId?.fullname || guide.fullname || "Nama tidak tersedia",
+                          foto: guide.foto ? `http://localhost:3000/images_guide/${guide.foto}` : "https://via.placeholder.com/200x200/3498db/ffffff?text=G",
+                          spesialisasi: guide.spesialisasi || "Tour Guide",
+                          pengalaman: guide.pengalaman ? `${guide.pengalaman} Tahun` : "Pengalaman belum diisi",
+                          rating: "★★★★☆", // Default rating, bisa disesuaikan dengan data rating dari backend
+                          bahasa: guide.bahasa ? [guide.bahasa] : ["Indonesia"],
+                          lokasi: guide.lokasi || "Lokasi belum diisi",
+                          telepon: guide.userId?.phone || guide.phone || "+62 812-3456-7890",
+                          email: guide.userId?.email || guide.email || "email@tidaktersedia.com",
+                          tarif: "Rp 250.000/hari" // Default, bisa ditambahkan field di model
+                      };
+                  });
+                  
+                  console.log(`📊 ${guideData.length} guide ditemukan`);
+                  displayGuides(guideData);
+              } else {
+                  console.error("❌ Gagal mengambil data guide:", result.error);
+                  // Tampilkan data dummy jika gagal
+                  loadFallbackData();
+              }
+              
+          } catch (error) {
+              console.error("❌ Error fetching guides:", error);
+              // Tampilkan data dummy sebagai fallback
+              loadFallbackData();
+          }
+      }
+
+      // Data fallback jika API gagal
+      function loadFallbackData() {
+          console.log("⚠️ Menggunakan data fallback...");
+          guideData = [
+              {
+                  id: 1,
+                  nama: "Ahmad Rizki",
+                  foto: "https://via.placeholder.com/200x200/3498db/ffffff?text=AR",
+                  spesialisasi: "Wisata Alam & Adventure",
+                  pengalaman: "5 tahun",
+                  rating: "★★★★★",
+                  bahasa: ["Indonesia", "Inggris", "Minang"],
+                  lokasi: "Bukittinggi",
+                  telepon: "+62 812-3456-7891",
+                  email: "ahmad.rizki@guide.com",
+                  tarif: "Rp 300.000/hari"
+              }
+          ];
+          displayGuides(guideData);
+          
+          // Tampilkan pesan error
+          const grid = document.getElementById("guideGrid");
+          const errorMsg = document.createElement("div");
+          errorMsg.className = "error-message";
+          errorMsg.innerHTML = `
+              <p style="color: #e74c3c; text-align: center; padding: 20px;">
+                  ⚠️ Tidak dapat terhubung ke server. Menampilkan data contoh.
+              </p>
+          `;
+          grid.appendChild(errorMsg);
+      }
+
+      // Fungsi untuk menampilkan guide
+      function displayGuides(guideList = guideData) {
+          const grid = document.getElementById("guideGrid");
+          grid.innerHTML = "";
+
+          if (guideList.length === 0) {
+              grid.innerHTML = `
+                  <div class="no-guides">
+                      <h3>😔 Belum ada tour guide tersedia</h3>
+                      <p>Silakan coba lagi nanti atau gunakan kata kunci pencarian lain.</p>
+                  </div>
+              `;
+              return;
+          }
+
+          guideList.forEach((guide) => {
+              const card = document.createElement("div");
+              card.className = "guide-card";
+              card.innerHTML = `
+                  <div class="guide-header">
+                      <img src="${guide.foto}" alt="${guide.nama}" class="guide-photo">
+                      <h3 class="guide-name">${guide.nama}</h3>
+                      <div class="guide-specialization">${guide.spesialisasi}</div>
+                      <div class="guide-rating">${guide.rating} (${guide.pengalaman})</div>
+                  </div>
+                  <div class="guide-content">
+                      <div class="guide-info">
+                          <div class="info-item">
+                              <span>📍</span>
+                              <span>Lokasi: ${guide.lokasi}</span>
+                          </div>
+                          <div class="info-item">
+                              <span>💬</span>
+                              <span>Bahasa: ${Array.isArray(guide.bahasa) ? guide.bahasa.join(", ") : guide.bahasa}</span>
+                          </div>
+                      </div>
+                      
+                      <div class="guide-contact">
+                          <div class="contact-number">📞 ${guide.telepon}</div>
+                          <div class="contact-email">✉️ ${guide.email}</div>
+                      </div>
+                      
+                      <div class="guide-actions">
+                          <button class="btn-contact" onclick="hubungiGuide('${guide.telepon}', '${guide.nama}')">Hubungi via WhatsApp</button>
+                      </div>
+                  </div>
+              `;
+              grid.appendChild(card);
+          });
+      }
+
+      // Fungsi pencarian guide
+      function searchGuides() {
+          const searchTerm = document.getElementById("searchInput").value.toLowerCase();
+
+          const filtered = guideData.filter((guide) => {
+              return (
+                  guide.nama.toLowerCase().includes(searchTerm) ||
+                  guide.spesialisasi.toLowerCase().includes(searchTerm) ||
+                  guide.lokasi.toLowerCase().includes(searchTerm) ||
+                  (Array.isArray(guide.bahasa) && 
+                  guide.bahasa.some(b => b.toLowerCase().includes(searchTerm)))
+              );
+          });
+
+          displayGuides(filtered);
+      }
+
+      // Fungsi hubungi guide (diperbaiki)
+      function hubungiGuide(telepon, nama) {
+          // Format nomor telepon untuk WhatsApp
+          const cleanPhone = telepon.replace(/[^\d+]/g, "");
+          
+          if (confirm(`Apakah Anda ingin menghubungi ${nama} (${telepon}) via WhatsApp?`)) {
+              const message = `Halo, saya tertarik untuk menggunakan jasa tour guide Anda. Boleh info lebih lanjut?`;
+              const whatsappURL = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(message)}`;
+              window.open(whatsappURL, "_blank");
+          }
+      }
+
+            // Fungsi untuk mengatur tampilan user actions
+      function setupUserActions() {
+        const userActions = document.getElementById("userActions");
+        const isLoggedIn = localStorage.getItem("isLoggedIn");
+        const username = localStorage.getItem("username");
+
+        if (isLoggedIn === "true" && username) {
+          userActions.innerHTML = `
+            <div class="user-info">
+                <span>Halo, ${username}</span>
+                <button class="logout-btn" onclick="logout()">Logout</button>
+            </div>
+          `;
+        } else {
+          userActions.innerHTML = `
+            <a href="../auth/register.html">Daftar</a>
+            <a href="../auth/login.html" class="login-btn">Masuk</a>
+          `;
+        }
+      }
+
+      // Fungsi logout
+      function logout() {
+        if (confirm("Apakah Anda yakin ingin logout?")) {
+          localStorage.removeItem("isLoggedIn");
+          localStorage.removeItem("user_role");
+          localStorage.removeItem("username");
+          localStorage.removeItem("admin_logged_in");
+          alert("Logout berhasil!");
+          window.location.href = "../index.html";
+        }
+      }
+
+      // Event listeners untuk real-time search
+      document.getElementById("searchInput").addEventListener("input", searchGuides);
+
+      // Initialize
+      document.addEventListener("DOMContentLoaded", function () {
+          console.log("🚀 Halaman tour-guide siap!");
+          fetchGuides();
+          setupUserActions();
+      });
+
+  </script>
+  </body>
+</html>

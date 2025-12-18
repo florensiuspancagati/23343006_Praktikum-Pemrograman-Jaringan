@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SUMTOUR - Rekomendasi Wisata Sumatera Barat</title>
+    <link rel="stylesheet" href="../css/index.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container header-container">
+        <div class="logo">
+          <img
+            src="../../public/images/image/logo.png"
+            alt="SUMTOUR Logo"
+          />
+          <h1>SUMTOUR</h1>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="index.html" class="active">Beranda</a></li>
+            <li><a href="destinasi/destinasi.html">Destinasi</a></li>
+            <li><a href="guide/tour-guide.html">Tour Guide</a></li>
+            <li><a href="user/riwayat.html">Riwayat</a></li>
+            <li><a href="tentang.html">Tentang</a></li>
+          </ul>
+        </nav>
+        <div class="user-actions" id="userActions">
+          <!-- Akan diisi oleh JavaScript -->
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <h2>Jelajahi Keindahan Sumatera Barat</h2>
+        <p>Temukan destinasi wisata terbaik dengan rekomendasi personalized untuk pengalaman tak terlupakan</p>
+      </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="search-section">
+      <div class="container">
+        <div class="search-container">
+          <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Cari destinasi wisata..." />
+          </div>
+          <select class="filter-select" id="categoryFilter">
+            <option value="">Semua Kategori</option>
+            <option value="Alam">Wisata Alam</option>
+            <option value="Budaya">Wisata Budaya</option>
+            <option value="Kuliner">Wisata Kuliner</option>
+            <option value="Sejarah">Wisata Sejarah</option>
+          </select>
+          <select class="filter-select" id="priceFilter">
+            <option value="">Semua Harga</option>
+            <option value="murah">Murah (< Rp 50k)</option>
+            <option value="sedang">Sedang (Rp 50k - 200k)</option>
+            <option value="mahal">Mahal (> Rp 200k)</option>
+          </select>
+          <button class="search-btn" onclick="searchDestinations()">Cari</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Destinasi Populer Section -->
+    <section class="destinasi-section">
+      <div class="container">
+        <div class="section-title">
+          <h2>Destinasi di Sumatera Barat</h2>
+          <p>Temukan tempat wisata di Sumatera Barat</p>
+        </div>
+        <div class="destinasi-grid" id="destinasiGrid">
+          <!-- Data destinasi akan diisi oleh JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-column">
+            <h3>Tentang SUMTOUR</h3>
+            <p>SUMTOUR adalah platform rekomendasi wisata di Sumatera Barat yang membantu wisatawan menemukan destinasi terbaik sesuai minat mereka.</p>
+            <div class="social-links">
+              <a href="#"><span>FB</span></a>
+              <a href="#"><span>IG</span></a>
+              <a href="#"><span>TW</span></a>
+              <a href="#"><span>YT</span></a>
+            </div>
+          </div>
+          <div class="footer-column">
+            <h3>Kontak Kami</h3>
+            <p><span>📍</span> Jl. Prof. Dr. Hamka, Air Tawar Barat, Padang Utara, Kota Padang</p>
+            <p><span>📞</span> +62 812 3456 7890</p>
+            <p><span>✉️</span> info@sumtour.id</p>
+          </div>
+          <div class="footer-column">
+            <h3>Link Cepat</h3>
+            <a href="index.html">Beranda</a>
+            <a href="destinasi/destinasi.html">Destinasi Wisata</a>
+            <a href="guide/tour-guide.html">Tour Guide</a>
+            <a href="user/riwayat.html">Riwayat Saya</a>
+            <a href="tentang.html">Tentang Kami</a>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>&copy; 2025 SUMTOUR - Web Aplikasi Rekomendasi Wisata di Sumatera Barat. All rights reserved.</p>
+          <p>Disusun oleh: Florensius Panca Gati (23343006) & Meli Fitri Zamili (23343010)</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      let destinasiData = [];
+      // Ambil data dari backend
+      async function loadDestinasiFromDB() {
+          try {
+              const res = await fetch("http://localhost:3000/destinasi/all");
+              const result = await res.json();
+
+              if (!result.success) {
+                  console.error("Gagal mengambil data destinasi");
+                  return;
+              }
+
+              destinasiData = result.data;
+              displayDestinasi(destinasiData);
+          } catch (err) {
+              console.error("Error fetch destinasi:", err);
+          }
+      }
+
+      // Tampilkan destinasi
+      function displayDestinasi(destinasiList = destinasiData) {
+          const grid = document.getElementById("destinasiGrid");
+          grid.innerHTML = "";
+
+          destinasiList.forEach((destinasi) => {
+              const card = document.createElement("div");
+              card.className = "destinasi-card";
+
+              const hargaTampil = destinasi.biaya?.tiket
+                  ? `Rp ${destinasi.biaya.tiket}`
+                  : "Tidak ada data";
+
+              card.innerHTML = `
+                  <img src="http://localhost:3000${destinasi.gambar}" 
+                      alt="${destinasi.nama}" class="card-image">
+
+                  <div class="card-content">
+                      <h3>${destinasi.nama}</h3>
+                      <div class="card-location"><span>📍</span> ${destinasi.lokasi}</div>
+                      <span class="card-category">${destinasi.kategori}</span>
+                      <div class="card-price">${hargaTampil}</div>
+
+                      <div class="card-actions">
+                          <button class="btn-detail" onclick="lihatDetail('${destinasi._id}')">
+                              Lihat Detail
+                          </button>
+                      </div>
+                  </div>
+              `;
+
+              grid.appendChild(card);
+          });
+      }
+
+      // Lihat detail
+      function lihatDetail(id) {
+          window.location.href = `destinasi/destinasi-detail.html?id=${id}`;
+      }
+
+      // Pencarian
+      function searchDestinations() {
+        const searchTerm = document.getElementById("searchInput").value.toLowerCase();
+        const category = document.getElementById("categoryFilter").value.toLowerCase();
+        const price = document.getElementById("priceFilter").value;
+
+        const filtered = destinasiData.filter((d) => {
+            const matchSearch =
+                d.nama.toLowerCase().includes(searchTerm) ||
+                d.lokasi.toLowerCase().includes(searchTerm);
+
+            const kategoriDB = d.kategori?.toLowerCase() || "";
+            const matchCategory = !category || kategoriDB === category;
+
+            const tiket = d.biaya?.tiket || 0;
+            const matchPrice =
+                price === "" ||
+                (price === "murah" && tiket < 50000) ||
+                (price === "sedang" && tiket >= 50000 && tiket <= 200000) ||
+                (price === "mahal" && tiket > 200000);
+
+            return matchSearch && matchCategory && matchPrice;
+        });
+
+        displayDestinasi(filtered);
+      }
+
+      function setupUserActions() {
+        const userActions = document.getElementById("userActions");
+        const isLoggedIn = localStorage.getItem("isLoggedIn");
+        const username = localStorage.getItem("username");
+
+        if (isLoggedIn === "true" && username) {
+          userActions.innerHTML = `
+                    <div class="user-info">
+                        <span>Halo, ${username}</span>
+                        <button class="logout-btn" onclick="logout()">Logout</button>
+                    </div>
+                `;
+        } else {
+          userActions.innerHTML = `
+                    <a href="auth/register.html">Daftar</a>
+                    <a href="auth/login.html" class="login-btn">Masuk</a>
+                `;
+        }
+      }
+
+      // Fungsi logout
+      function logout() {
+        if (confirm("Apakah Anda yakin ingin logout?")) {
+          localStorage.removeItem("isLoggedIn");
+          localStorage.removeItem("user_role");
+          localStorage.removeItem("username");
+          localStorage.removeItem("admin_logged_in");
+          alert("Logout berhasil!");
+          window.location.href = "../index.html";
+        }
+      }
+      
+      // Load dari backend saat halaman dibuka
+      document.addEventListener("DOMContentLoaded", function () {
+        loadDestinasiFromDB();
+        setupUserActions();
+      });
+
+    </script>
+  </body>
+</html>

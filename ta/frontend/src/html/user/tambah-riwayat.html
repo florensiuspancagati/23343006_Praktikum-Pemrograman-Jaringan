@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tambah Riwayat - SUMTOUR</title>
+  <link rel="stylesheet" href="../../css/tambah-riwayat.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+      <div class="container header-container">
+        <div class="logo">
+          <img
+            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTIwIDBDOC45NTQgMCAwIDguOTU0IDAgMjBTOC45NTQgNDAgMjAgNDBTNDAgMzEuMDQ2IDQwIDIwUzMxLjA0NiAwIDIwIDBaIiBmaWxsPSIjMzQ5OGRiIi8+CjxwYXRoIGQ9Ik0xNiAxNkgyNFYyNEgxNlYxNloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yNCAyNEgyNlYyNkgyNFYyNFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yNiAyNkgyOFYyOEgyNlYyNloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yOCAyOEgzMFYzMEgyOFYyOFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xNiAyNEgxNFYyNkgxNlYyNFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xNCAyNkgxMlYyOEgxNFYyNloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xMiAyOEgxMFYzMEgxMlYyOFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yNiAxNkgyOFYxOEgyNlYxNloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yOCAxOEgzMFYyMEgyOFYxOFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xNCAxNkgxNlYxOEgxNFYxNloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xMiAxOEgxNFYyMEgxMlYxOFoiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo="
+            alt="SUMTOUR Logo"
+          />
+          <h1>SUMTOUR</h1>
+        </div>
+        <div>
+          <nav>
+          <ul>
+            <li><a href="riwayat.html">Kembali</a></li>
+        </nav>
+        </div>
+      </div>
+    </header>
+    
+    <div class="container">
+    <h2>Tambah Riwayat Perjalanan</h2>
+    <form id="riwayatForm">
+        <div class="form-group">
+            <label>Nama Destinasi</label>
+            <input type="text" id="nama" required>
+        </div>
+        <div class="form-group">
+            <label>Lokasi</label>
+            <input type="text" id="lokasi" required>
+        </div>
+        <div class="form-group">
+            <label>Gambar Destinasi (URL atau Upload)</label>
+            <div class="image-input-container">
+                <div class="image-input-group">
+                <input type="file" id="gambarFile" name="gambarFile" accept="image/*" multiple />
+                </div>
+            </div>
+            <span class="form-hint">Format: JPG, PNG, maks 5MB. Rasio 16:9 disarankan</span>
+        </div>
+        <div class="form-group">
+            <label>Deskripsi</label>
+            <textarea id="deskripsi" required></textarea>
+        </div>
+        <div class="form-group">
+            <label>Tanggal (YYYY-MM-DD)</label>
+            <input type="date" id="tanggal">
+        </div>
+        <div class="form-group">
+            <label>Waktu (HH:MM)</label>
+            <input type="time" id="waktu">
+        </div>
+        <button type="submit">Simpan Riwayat</button>
+    </form>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-column">
+            <h3>Tentang SUMTOUR</h3>
+            <p>SUMTOUR adalah platform rekomendasi wisata di Sumatera Barat yang membantu wisatawan menemukan destinasi terbaik sesuai minat mereka.</p>
+            <div class="social-links">
+              <a href="#"><span>FB</span></a>
+              <a href="#"><span>IG</span></a>
+              <a href="#"><span>TW</span></a>
+              <a href="#"><span>YT</span></a>
+            </div>
+          </div>
+          <div class="footer-column">
+            <h3>Kontak Kami</h3>
+            <p><span>📍</span> Jl. Prof. Dr. Hamka, Air Tawar Barat, Padang Utara, Kota Padang</p>
+            <p><span>📞</span> +62 812 3456 7890</p>
+            <p><span>✉️</span> info@sumtour.id</p>
+          </div>
+          <div class="footer-column">
+            <h3>Link Cepat</h3>
+            <a href="../index.html">Beranda</a>
+            <a href="../destinasi/destinasi.html">Destinasi Wisata</a>
+            <a href="../guide/tour-guide.html">Tour Guide</a>
+            <a href="../user/riwayat.html">Riwayat Saya</a>
+            <a href="../tentang.html">Tentang Kami</a>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>&copy; 2025 SUMTOUR - Web Aplikasi Rekomendasi Wisata di Sumatera Barat. All rights reserved.</p>
+          <p>Disusun oleh: Florensius Panca Gati (23343006) & Meli Fitri Zamili (23343010)</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+        const token = localStorage.getItem("token"); // ambil token user yang login
+        document.getElementById("riwayatForm").addEventListener("submit", async function(e) {
+            e.preventDefault();
+
+            const nama = document.getElementById("nama").value;
+            const lokasi = document.getElementById("lokasi").value;
+            const deskripsi = document.getElementById("deskripsi").value;
+            const tanggal = document.getElementById("tanggal").value;
+            const waktu = document.getElementById("waktu").value;
+            const gambarFile = document.getElementById("gambarFile").files[0];
+
+            if (!gambarFile) {
+                alert("Gambar wajib diupload!");
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append("nama", nama);
+            formData.append("lokasi", lokasi);
+            formData.append("deskripsi", deskripsi);
+            formData.append("tanggal", tanggal);
+            formData.append("waktu", waktu);
+            formData.append("gambar", gambarFile); // harus sama dengan upload.single('gambar')
+
+            try {
+                const res = await fetch("http://localhost:3000/riwayat", {
+                    method: "POST",
+                    headers: {
+                        "Authorization": "Bearer " + token
+                        // Jangan set Content-Type, biarkan browser yang mengatur multipart/form-data
+                    },
+                    body: formData
+                });
+
+                const data = await res.json();
+                if (!res.ok) throw new Error(data.error || "Gagal menambah riwayat!");
+
+                alert("Riwayat berhasil ditambahkan!");
+                window.location.href = "riwayat.html";
+            } catch (err) {
+                alert("Error: " + err.message);
+            }
+        });
+    </script>
+
+
+</body>
+</html>
