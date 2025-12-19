@@ -10,25 +10,25 @@
     <!-- Header -->
     <header>
       <div class="container header-container">
-        <div class="logo">
+      <div class="logo">
           <img
-            src="../../public/images/image/logo.png"
-            alt="SUMTOUR Logo"
+          src="..\..\public\images\image\logo.png"
+          alt="SUMTOUR Logo"
           />
           <h1>SUMTOUR</h1>
-        </div>
-        <nav>
+      </div>
+      <nav>
           <ul>
-            <li><a href="index.html" class="active">Beranda</a></li>
-            <li><a href="destinasi/destinasi.html">Destinasi</a></li>
-            <li><a href="guide/tour-guide.html">Tour Guide</a></li>
-            <li><a href="user/riwayat.html">Riwayat</a></li>
-            <li><a href="tentang.html">Tentang</a></li>
+          <li><a href="index.html" class="active">Beranda</a></li>
+          <li><a href="destinasi/destinasi.html">Destinasi</a></li>
+          <li><a href="guide/tour-guide.html">Tour Guide</a></li>
+          <li><a href="user/riwayat.html">Riwayat</a></li>
+          <li><a href="tentang.html">Tentang</a></li>
           </ul>
-        </nav>
-        <div class="user-actions" id="userActions">
+      </nav>
+      <div class="user-actions" id="userActions">
           <!-- Akan diisi oleh JavaScript -->
-        </div>
+      </div>
       </div>
     </header>
 
@@ -95,8 +95,8 @@
           <div class="footer-column">
             <h3>Kontak Kami</h3>
             <p><span>📍</span> Jl. Prof. Dr. Hamka, Air Tawar Barat, Padang Utara, Kota Padang</p>
-            <p><span>📞</span> +62 812 3456 7890</p>
-            <p><span>✉️</span> info@sumtour.id</p>
+            <p><span>📞</span> +62 813 7412 8445</p>
+            <p><span>✉️</span> sumtour@gmail.com</p>
           </div>
           <div class="footer-column">
             <h3>Link Cepat</h3>
@@ -109,7 +109,7 @@
         </div>
         <div class="copyright">
           <p>&copy; 2025 SUMTOUR - Web Aplikasi Rekomendasi Wisata di Sumatera Barat. All rights reserved.</p>
-          <p>Disusun oleh: Florensius Panca Gati (23343006) & Meli Fitri Zamili (23343010)</p>
+          <p>Disusun oleh: Florensius Panca Gati (23343006)</p>
         </div>
       </div>
     </footer>
@@ -201,6 +201,7 @@
         displayDestinasi(filtered);
       }
 
+      // Fungsi untuk mengatur tampilan user actions
       function setupUserActions() {
         const userActions = document.getElementById("userActions");
         const isLoggedIn = localStorage.getItem("isLoggedIn");
@@ -229,7 +230,7 @@
           localStorage.removeItem("username");
           localStorage.removeItem("admin_logged_in");
           alert("Logout berhasil!");
-          window.location.href = "../index.html";
+          window.location.href = "index.html";
         }
       }
       
