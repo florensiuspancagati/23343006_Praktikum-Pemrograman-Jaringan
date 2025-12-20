@@ -13,12 +13,14 @@ const destinasiRoutes = require('./src/routes/destinasiRoute');
 const adminRoutes = require('./src/routes/adminRoute');
 const riwayatRoutes = require('./src/routes/riwayatRoute');
 const guideRoutes = require('./src/routes/guideRoute');
+const cookieParser = require('cookie-parser');
 
 app.use(cors({
     origin: 'http://127.0.0.1:5500', // Sesuai Origin Frontend
     credentials: true,
 }));
-app.use(express.json());  // 
+app.use(express.json());
+app.use(cookieParser());
 
 // connect to mongodb
 require("dotenv").config();

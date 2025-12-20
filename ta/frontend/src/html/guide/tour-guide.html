@@ -94,20 +94,16 @@
     </footer>
     <script>
       const token = localStorage.getItem("token");
-
-      // SEMBUNYIKAN FORM DAN KONTEN JIKA BELUM LOGIN
-      const pageContainer = document.querySelector(".container"); // container utama
+      const pageContainer = document.querySelector(".container"); 
       if (!token) {
         alert("Silakan login terlebih dahulu.");
 
-        // SEMBUNYIKAN SEMUA .container KECUALI HEADER DAN FOOTER
         document.querySelectorAll(".container").forEach(c => {
             if (!c.closest("header") && !c.closest("footer")) {
                 c.style.display = "none";
             }
         });
 
-        // === BUAT PESAN LOGIN DI TENGAH HALAMAN ===
         const loginBox = document.createElement("div");
         loginBox.id = "login-required-box";
         loginBox.style.cssText = `
@@ -206,9 +202,8 @@
             });
         };
 
-        // STOP SCRIPT LANJUTAN
         throw new Error("User belum login");
-    }
+      }
 
       // Data tour guide - HAPUS DATA STATIS & GANTI DENGAN FUNGSI FETCH
       let guideData = []; // Array kosong, akan diisi dari API
@@ -404,6 +399,7 @@
       // Fungsi logout
       function logout() {
         if (confirm("Apakah Anda yakin ingin logout?")) {
+          localStorage.removeItem("token");
           localStorage.removeItem("isLoggedIn");
           localStorage.removeItem("user_role");
           localStorage.removeItem("username");

@@ -20,7 +20,7 @@ const addDestinasi = async (req, res) => {
             console.log("✅ Menggunakan URL gambar");
         } 
         else if (req.file) {
-            gambarPath = `/images/${req.file.filename}`;
+            gambarPath = `${req.file.filename}`;
             console.log("✅ Menggunakan file upload:", req.file.filename);
         }
 
@@ -127,7 +127,7 @@ const updateDestinasi = async (req, res) => {
         if (req.body.gambarUrl && req.body.gambarUrl.trim() !== '') {
             destinasi.gambar = req.body.gambarUrl.trim();
         } else if (req.file) {
-            destinasi.gambar = `/images/${req.file.filename}`;
+            destinasi.gambar = `${req.file.filename}`;
         }
 
         await destinasi.save();
@@ -157,11 +157,14 @@ const deleteDestinasi = async (req, res) => {
                 error: "Destinasi tidak ditemukan" 
             });
         }
-        
+
+        await Destinasi.findByIdAndDelete(req.params.id);
+
         res.status(200).json({
             success: true,
             message: "Destinasi berhasil dihapus"
         });
+        
     } catch (error) {
         console.error("Error delete destinasi:", error);
         res.status(500).json({ 
@@ -171,10 +174,75 @@ const deleteDestinasi = async (req, res) => {
     }
 };
 
+const addComment = async (req, res) => {
+    try {
+        console.log("=== ADD COMMENT ===");
+        console.log("req.userId:", req.userId);
+        console.log("req.user:", req.user);
+        
+        const destinasiId = req.params.id;
+        const { isi } = req.body;
+
+        if (!isi || isi.trim() === "") {
+            return res.status(400).json({
+                success: false,
+                error: "Komentar tidak boleh kosong"
+            });
+        }
+
+        // GUNAKAN req.user dari middleware
+        if (!req.user || !req.userId) {
+            console.error("User tidak terautentikasi");
+            return res.status(401).json({
+                success: false,
+                error: "Anda harus login untuk berkomentar"
+            });
+        }
+
+        const destinasi = await Destinasi.findById(destinasiId);
+        if (!destinasi) {
+            return res.status(404).json({
+                success: false,
+                error: "Destinasi tidak ditemukan"
+            });
+        }
+
+        if (!Array.isArray(destinasi.komentar)) {
+            destinasi.komentar = [];
+        }
+
+        // Tambahkan komentar dengan data dari token
+        destinasi.komentar.push({
+            userId: req.userId,
+            nama: req.user.nama || req.user.username || "Anonim",
+            isi: isi.trim(),
+            tanggal: new Date()
+        });
+
+        await destinasi.save();
+
+        res.status(201).json({
+            success: true,
+            message: "Komentar berhasil ditambahkan",
+            data: { 
+                komentar: destinasi.komentar
+            }
+        });
+
+    } catch (error) {
+        console.error("Error addComment:", error);
+        res.status(500).json({
+            success: false,
+            error: "Gagal menambahkan komentar: " + error.message
+        });
+    }
+};
+
 module.exports = {
     addDestinasi,
     getAllDestinasi,
     getDestinasiById,
     updateDestinasi,
-    deleteDestinasi
+    deleteDestinasi,
+    addComment
 };

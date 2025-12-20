@@ -319,6 +319,7 @@
 
 
       function logout() {
+        localStorage.removeItem("token");
         localStorage.clear();
         window.location.href = "../auth/login.html";
       }

@@ -3,10 +3,12 @@ const router = express.Router();
 const guideController = require("../controllers/guideController.js");
 const multer = require("multer");
 const auth = require("../middleware/authUserMiddleware.js");
+const path = require("path");
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "../../public/images_guide/");
+      const dir = path.join(__dirname, "../../public/images_guide");
+      cb(null, dir);
   },
   filename: (req, file, cb) => {
     cb(null, Date.now() + "-" + file.originalname);
@@ -15,10 +17,9 @@ const storage = multer.diskStorage({
 
 const upload = multer({ 
   storage: storage,
-  // TAMBAHKAN INI untuk parsing text fields:
   limits: { fileSize: 5 * 1024 * 1024 }, // 5MB limit
   fileFilter: (req, file, cb) => {
-    if (file.mimetype.startsWith('image/')) {
+    if (file.mimetype) {
       cb(null, true);
     } else {
       cb(new Error('Hanya file gambar yang diperbolehkan'), false);

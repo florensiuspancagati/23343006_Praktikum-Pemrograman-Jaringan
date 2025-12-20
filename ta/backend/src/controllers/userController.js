@@ -61,18 +61,36 @@ exports.login = async (req, res) => {
     if (password !== user.password)
       return res.status(400).json({ error: "Password salah!" });
 
+    // PERBAIKAN: Tambahkan lebih banyak data di token
     const token = jwt.sign(
-      { id: user._id, role: user.role },
-      process.env.JWT_SECRET
+      { 
+        userId: user._id,      // Gunakan userId bukan id
+        id: user._id,          // Jaga kompatibilitas
+        username: user.username,
+        nama: user.nama || user.username,
+        role: user.role 
+      },
+      process.env.JWT_SECRET,
+      { expiresIn: '24h' }     // Tambahkan expiry
     );
 
+    // PERBAIKAN: Response format yang konsisten
     return res.json({
+      success: true,           // Tambahkan success flag
       message: "Login sukses!",
-      token,
-      user,
+      token: token,
+      user: {
+        _id: user._id,
+        username: user.username,
+        nama: user.nama || user.username,
+        role: user.role
+      }
     });
 
   } catch (err) {
-    return res.status(500).json({ error: err.message });
+    return res.status(500).json({ 
+      success: false,
+      error: err.message 
+    });
   }
 };

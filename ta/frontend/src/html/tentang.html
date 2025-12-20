@@ -117,14 +117,14 @@
           <h3>Tim Pengembang</h3>
           <div class="team-grid">
             <div class="team-card">
-              <img src="https://via.placeholder.com/200x200/3498db/ffffff?text=FPG" alt="Florensius Panca Gati" class="team-photo" />
+              <img src="#" alt="Florensius Panca Gati" class="team-photo" />
               <h4>Florensius Panca Gati</h4>
               <div class="team-role">Full Stack Developer</div>
               <div class="team-nim">NIM: 23343006</div>
               <p class="team-description">Bertanggung jawab dalam pengembangan backend, database, dan integrasi sistem.</p>
             </div>
             <div class="team-card">
-              <img src="https://via.placeholder.com/200x200/e74c3c/ffffff?text=MFZ" alt="Meli Fitri Zamili" class="team-photo" />
+              <img src="#" alt="Meli Fitri Zamili" class="team-photo" />
               <h4>Meli Fitri Zamili</h4>
               <div class="team-role">UI/UX Designer & Frontend Developer</div>
               <div class="team-nim">NIM: 23343010</div>
@@ -231,6 +231,7 @@
       // Fungsi logout
       function logout() {
         if (confirm("Apakah Anda yakin ingin logout?")) {
+          localStorage.removeItem("token");
           localStorage.removeItem("isLoggedIn");
           localStorage.removeItem("user_role");
           localStorage.removeItem("username");

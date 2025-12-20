@@ -2,9 +2,15 @@ const multer = require('multer');
 const path = require('path');
 
 const storage = multer.diskStorage({
-    destination: '../../public/images_destinasi/',
+    destination: (req, file, cb) => {
+        cb(null, path.join(__dirname, "../../public/images_destinasi"));
+    },
     filename: (req, file, cb) => {
-        const uniqueName = Date.now() + '-' + Math.round(Math.random() * 1E9) +  path.extname(file.originalname);
+        const uniqueName =
+            Date.now() + 
+            '-' + 
+            Math.round(Math.random() * 1E9) +
+            path.extname(file.originalname);
         cb(null, uniqueName);
     }
 });

@@ -129,7 +129,7 @@
       // Ambil data dari backend
       async function fetchDestinasiData() {
         try {
-          const res = await fetch("http://localhost:3000/destinasi/all");
+          const res = await fetch("http://localhost:3000/destinasi/public/all");
           const result = await res.json();
 
           if(!result.success) {
@@ -158,7 +158,7 @@
           const card = document.createElement("div");
           card.className = "destinasi-card";
           card.innerHTML = `
-                    <img src="http://localhost:3000${destinasi.gambar}" class="card-image">
+                    <img src="http://localhost:3000/images_destinasi/${destinasi.gambar}" class="card-image">
                     <div class="card-content">
                         <h3>${destinasi.nama}</h3>
                         <div class="card-location">
@@ -252,6 +252,7 @@
       // Fungsi logout
       function logout() {
         if (confirm("Apakah Anda yakin ingin logout?")) {
+          localStorage.removeItem("token");
           localStorage.removeItem("isLoggedIn");
           localStorage.removeItem("user_role");
           localStorage.removeItem("username");
