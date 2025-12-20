@@ -5,7 +5,18 @@ const connectDB = require('./src/config/mongodb'); // function to connect to Mon
 const path = require('path');         // path module for handling file paths
 const port = 3000;                    // server will run on this port
 
+const http = require("http");
+const { Server } = require("socket.io");
+
 const app = express();                // create an express application
+const server = http.createServer(app);
+const io = new Server(server, {
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST"]
+  }
+});
+require("./src/socket/chatSocket")(io);
 
 const userRoutes = require('./src/routes/userRoute');
 const verifyAdmin = require('./src/middleware/authAdminMiddleware.js');
@@ -51,6 +62,6 @@ app.get('/', (req, res) => {
   res.send('Backend for SUMTOUR is running!');
 });
 
-app.listen(port, () => {
-    console.log(`Server is running on: http://localhost:${port}`);
+server.listen(port, () => {
+    console.log(`Server + Socket is running on: http://localhost:${port}`);
 });

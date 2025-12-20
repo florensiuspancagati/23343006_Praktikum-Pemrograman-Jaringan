@@ -28,7 +28,7 @@ const upload = multer({
 });
 
 router.get("/me", auth, guideController.getMyGuideProfile);  
-router.get("/", guideController.getAllGuides);               
+router.get("/all", guideController.getAllGuides);               
 
 // Route berdasarkan userId
 router.get("/user/:userId", guideController.getGuideByUserId);  

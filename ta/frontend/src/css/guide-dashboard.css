@@ -247,6 +247,23 @@
         gap: 8px;
       }
 
+      .btn-chat {
+        margin-top: 10px;
+        width: 30%;
+        padding: 5px;
+        background: #27ae60;
+        border: none;
+        border-radius: 10px;
+        color: white;
+        font-weight: 100;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+
+      .btn-chat:hover {
+        background: #219a52;
+      }
+
       .btn-view,
       .btn-edit,
       .btn-delete {

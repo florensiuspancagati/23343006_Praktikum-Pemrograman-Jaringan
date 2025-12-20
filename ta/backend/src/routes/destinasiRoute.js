@@ -16,5 +16,8 @@ router.delete('/:id', adminAuth, destinasiController.deleteDestinasi);
 router.get('/public/all', destinasiController.getAllDestinasi);
 router.get('/public/:id', destinasiController.getDestinasiById);
 router.post('/:id/komentar', authUserMiddleware, destinasiController.addComment);
+router.put('/:id/komentar/:idKomentar', authUserMiddleware, destinasiController.updateComment);
+router.delete('/:id/komentar/:idKomentar', authUserMiddleware, destinasiController.deleteComment);
+
 
 module.exports = router;

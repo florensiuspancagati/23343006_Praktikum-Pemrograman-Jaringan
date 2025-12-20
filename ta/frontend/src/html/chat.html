@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chat - SUMTOUR</title>
+  <style>
+    body {
+    margin: 0;
+    font-family: "Segoe UI", Tahoma, sans-serif;
+    background: #ecf0f1;
+    }
+
+    .chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    max-width: 600px;
+    margin: auto;
+    background: white;
+    }
+
+    /* Header */
+    .chat-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 20px;
+    background: #3498db;
+    color: white;
+    }
+
+    .back-btn {
+      margin-bottom: 40px;
+      margin-right: 30px;
+      font-weight: bold;
+    cursor: pointer;
+    font-size: 15px;
+    }
+
+    /* Messages */
+    .chat-messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background: #f8f9fa;
+    }
+
+    /* Message bubble */
+    .message {
+    max-width: 70%;
+    padding: 10px 15px;
+    margin-bottom: 12px;
+    border-radius: 15px;
+    font-size: 14px;
+    line-height: 1.4;
+    }
+
+    .message.user {
+    background: #3498db;
+    color: white;
+    margin-left: auto;
+    border-bottom-right-radius: 5px;
+    }
+
+    .message.other {
+    background: #e0e0e0;
+    color: #333;
+    margin-right: auto;
+    border-bottom-left-radius: 5px;
+    }
+
+    /* Input */
+    .chat-input {
+    display: flex;
+    padding: 15px;
+    border-top: 1px solid #ddd;
+    }
+
+    .chat-input input {
+    flex: 1;
+    padding: 10px 15px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    outline: none;
+    }
+
+    .chat-input button {
+    margin-left: 10px;
+    padding: 10px 20px;
+    background: #2ecc71;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    }
+
+    .chat-input button:hover {
+    background: #27ae60;
+    }
+  </style>
+  <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+</head>
+<body>
+
+<div class="chat-container">
+
+  <!-- Header -->
+  <div class="chat-header">
+    <span class="back-btn" onclick="history.back()">Kembali</span>
+    <div>
+      <h3 id="chatWithName">Chat</h3>
+      <small id="chatRoleInfo"></small>
+    </div>
+  </div>
+
+  <!-- Messages -->
+  <div class="chat-messages" id="chatMessages">
+    <!-- pesan akan dirender di sini -->
+  </div>
+
+  <!-- Input -->
+  <div class="chat-input">
+    <input 
+      type="text" 
+      id="messageInput" 
+      placeholder="Ketik pesan..."
+      autocomplete="off"
+    />
+    <button onclick="sendMessage()">Kirim</button>
+  </div>
+
+</div>
+
+  <script>
+    const socket = io("http://localhost:3000");
+
+    const token = localStorage.getItem("token");
+    const payload = JSON.parse(atob(token.split(".")[1]));
+
+    const currentUserId = payload.id;
+
+    const params = new URLSearchParams(window.location.search);
+    const role = params.get("role"); // user | guide
+    const otherUserId = params.get("with");
+    const otherUserName = params.get("name");
+
+
+    document.getElementById("chatWithName").innerText = role === "user"
+      ? `Chat dengan Guide: ${otherUserName}`
+    : `Chat dengan User: ${otherUserName}`;
+
+    let userId, guideId;
+
+    if (role === "user") {
+      userId = currentUserId;
+      guideId = otherUserId;
+    } else {
+      guideId = currentUserId;
+      userId = otherUserId;
+    }
+
+    const ids = [currentUserId, otherUserId].sort();
+    const roomId = `chat_${ids[0]}_${ids[1]}`;
+
+
+    // JOIN ROOM
+    socket.emit("join_room", roomId);
+
+    const chatBox = document.getElementById("chatMessages");
+    
+    
+    // TERIMA PESAN
+    socket.on("receive_message", (data) => {
+      const div = document.createElement("div");
+      const isOwn = data.senderId === currentUserId;
+      div.className =
+      data.senderId === currentUserId ? "message user" : "message other";
+      
+      div.innerHTML = `
+        <p>${data.message}</p>
+        <strong class="sender-name">${isOwn ? "Anda" : data.senderName}</strong>;
+        <span>${new Date(data.createdAt).toLocaleTimeString()}</span>
+      `;
+
+      chatBox.appendChild(div);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    });
+
+    // KIRIM PESAN
+    function sendMessage() {
+      const senderName = localStorage.getItem("username");
+      const input = document.getElementById("messageInput");
+      const message = input.value.trim();
+      if (!message) return;
+
+      socket.emit("send_message", {
+        roomId,
+        senderId: currentUserId,
+        senderName,
+        receiverId: role === "user" ? guideId : userId,
+        message
+      });
+
+      input.value = "";
+    }
+
+  </script>
+</body>
+</html>

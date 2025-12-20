@@ -238,11 +238,113 @@ const addComment = async (req, res) => {
     }
 };
 
+const updateComment = async (req, res) => {
+  try {
+    const { id, idKomentar } = req.params;
+    const { isi } = req.body;
+
+    if (!isi || isi.trim() === "") {
+      return res.status(400).json({
+        success: false,
+        error: "Komentar tidak boleh kosong"
+      });
+    }
+
+    const destinasi = await Destinasi.findById(id);
+    if (!destinasi) {
+      return res.status(404).json({
+        success: false,
+        error: "Destinasi tidak ditemukan"
+      });
+    }
+
+    const komentar = destinasi.komentar.id(idKomentar);
+    if (!komentar) {
+      return res.status(404).json({
+        success: false,
+        error: "Komentar tidak ditemukan"
+      });
+    }
+
+    if (komentar.userId.toString() !== req.userId.toString()) {
+      return res.status(403).json({
+        success: false,
+        error: "Anda tidak berhak mengedit komentar ini"
+      });
+    }
+
+    komentar.isi = isi.trim();
+    await destinasi.save();
+
+    res.json({
+      success: true,
+      message: "Komentar berhasil diedit",
+      data: destinasi.komentar
+    });
+
+  } catch (err) {
+    console.error("Error editKomentar:", err);
+    res.status(500).json({
+      success: false,
+      error: "Gagal mengedit komentar"
+    });
+  }
+};
+
+const deleteComment = async (req, res) => {
+  try {
+    const { id, idKomentar } = req.params;
+
+    const destinasi = await Destinasi.findById(id);
+    if (!destinasi) {
+      return res.status(404).json({
+        success: false,
+        error: "Destinasi tidak ditemukan"
+      });
+    }
+
+    const komentar = destinasi.komentar.id(idKomentar);
+    if (!komentar) {
+      return res.status(404).json({
+        success: false,
+        error: "Komentar tidak ditemukan"
+      });
+    }
+
+    // 🔐 VALIDASI KEPEMILIKAN
+    if (komentar.userId.toString() !== req.userId.toString()) {
+      return res.status(403).json({
+        success: false,
+        error: "Anda tidak berhak menghapus komentar ini"
+      });
+    }
+
+    komentar.deleteOne();
+    await destinasi.save();
+
+    res.json({
+      success: true,
+      message: "Komentar berhasil dihapus",
+      data: destinasi.komentar
+    });
+
+  } catch (err) {
+    console.error("Error deleteKomentar:", err);
+    res.status(500).json({
+      success: false,
+      error: "Gagal menghapus komentar"
+    });
+  }
+};
+
+
 module.exports = {
     addDestinasi,
     getAllDestinasi,
     getDestinasiById,
     updateDestinasi,
     deleteDestinasi,
-    addComment
+    addComment,
+    updateComment,
+    deleteComment
 };

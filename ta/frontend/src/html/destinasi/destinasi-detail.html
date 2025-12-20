@@ -323,38 +323,66 @@
           }
       }
 
-      // Fungsi render komentar ke DOM
       function renderKomentar(komentarList) {
-          // Pastikan ID sesuai dengan HTML Anda
-          const container = document.getElementById("renderKomentar") || 
-                          document.getElementById("daftarKomentar");
-          
-          if (!container) {
-              console.error("Container komentar tidak ditemukan!");
-              return;
+        const token = localStorage.getItem("token");
+        let currentUserId = null;
+
+        if (token) {
+          try {
+            const payload = JSON.parse(atob(token.split(".")[1]));
+            currentUserId = payload.userId || payload.id || payload._id;
+          } catch (e) {
+            console.warn("Token invalid");
           }
+        }
 
-          if (!komentarList || komentarList.length === 0) {
-              container.innerHTML = "<p class='no-comment'>Belum ada komentar. Jadilah yang pertama berkomentar!</p>";
-              return;
-          }
+        const container =
+          document.getElementById("renderKomentar") ||
+          document.getElementById("daftarKomentar");
 
-          // Urutkan dari terbaru ke terlama
-          const sortedKomentar = [...komentarList].sort((a, b) => 
-              new Date(b.tanggal) - new Date(a.tanggal)
-          );
+        if (!container) {
+          console.error("Container komentar tidak ditemukan!");
+          return;
+        }
 
-          container.innerHTML = sortedKomentar.map(k => `
-              <div class="komentar-item">
-                  <strong>${k.nama || 'Anonim'}</strong> 
-                  <span class="komentar-tanggal">
-                      (${formatTanggal(k.tanggal)})
-                  </span>
-                  <p class="komentar-isi">${k.isi}</p>
-              </div>
+        if (!komentarList || komentarList.length === 0) {
+          container.innerHTML =
+            "<p class='no-comment'>Belum ada komentar. Jadilah yang pertama berkomentar!</p>";
+          return;
+        }
+
+        const sortedKomentar = [...komentarList].sort(
+          (a, b) => new Date(b.tanggal) - new Date(a.tanggal)
+        );
+
+        container.innerHTML = sortedKomentar.map(k => `
+            <div class="komentar-item" data-id="${k._id}">
+              <strong>${k.nama}</strong>
+              <span>(${formatTanggal(k.tanggal)})</span>
+
+              <p 
+                class="komentar-isi" 
+                id="komentar-${k._id}"
+                data-original="${k.isi}"
+                contenteditable="false"
+              >
+                ${k.isi}
+              </p>
+
+              ${
+                k.userId === currentUserId
+                  ? `
+                    <div class="komentar-actions">
+                      <button onclick="startEditKomentar('${k._id}')">✏ Edit</button>
+                      <button onclick="hapusKomentar('${k._id}')">🗑 Hapus</button>
+                    </div>
+                  `
+                  : ""
+              }
+            </div>
           `).join("");
       }
-
+      
       // Helper function untuk format tanggal
       function formatTanggal(tanggal) {
           const date = new Date(tanggal);
@@ -365,6 +393,119 @@
               hour: '2-digit',
               minute: '2-digit'
           });
+      }
+
+      function startEditKomentar(idKomentar) {
+        const p = document.getElementById(`komentar-${idKomentar}`);
+        if (!p) return;
+
+        p.contentEditable = "true";
+        p.focus();
+
+        // Pindahkan cursor ke akhir teks
+        const range = document.createRange();
+        const sel = window.getSelection();
+        range.selectNodeContents(p);
+        range.collapse(false);
+        sel.removeAllRanges();
+        sel.addRange(range);
+
+        const actionDiv = p.closest(".komentar-item").querySelector(".komentar-actions");
+
+        actionDiv.innerHTML = `
+          <button onclick="saveEditKomentar('${idKomentar}')">💾 Simpan</button>
+          <button onclick="cancelEditKomentar('${idKomentar}')">❌ Batal</button>
+        `;
+      }
+
+      function cancelEditKomentar(idKomentar) {
+        const p = document.getElementById(`komentar-${idKomentar}`);
+        if (!p) return;
+
+        p.textContent = p.dataset.original;
+        p.contentEditable = "false";
+
+        resetActionButtons(idKomentar);
+      }
+
+      async function saveEditKomentar(idKomentar) {
+        const token = localStorage.getItem("token");
+        const p = document.getElementById(`komentar-${idKomentar}`);
+        const newIsi = p.textContent.trim();
+        if (!newIsi) return alert("Komentar tidak boleh kosong");
+
+        const destinasi = JSON.parse(localStorage.getItem("selectedDestinasi"));
+
+        const res = await fetch(
+          `http://localhost:3000/destinasi/${destinasi._id}/komentar/${idKomentar}`,
+          {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`
+            },
+            body: JSON.stringify({ isi: newIsi })
+          }
+        );
+
+        const result = await res.json();
+        if (!res.ok) return alert(result.error || "Gagal update komentar");
+
+        p.dataset.original = newIsi;
+        p.contentEditable = "false";
+
+        resetActionButtons(idKomentar);
+      }
+
+      function resetActionButtons(idKomentar) {
+        const actionDiv = document
+          .querySelector(`[data-id="${idKomentar}"] .komentar-actions`);
+
+        actionDiv.innerHTML = `
+          <button onclick="startEditKomentar('${idKomentar}')">✏ Edit</button>
+          <button onclick="hapusKomentar('${idKomentar}')">🗑 Hapus</button>
+        `;
+      }
+
+      async function hapusKomentar(idKomentar) {
+        if (!confirm("Yakin ingin menghapus komentar ini?")) return;
+
+        const destinasi = JSON.parse(localStorage.getItem("selectedDestinasi"));
+        const token = localStorage.getItem("token");
+
+        try {
+          const res = await fetch(
+            `http://localhost:3000/destinasi/${destinasi._id}/komentar/${idKomentar}`,
+            {
+              method: "DELETE",
+              headers: {
+                Authorization: `Bearer ${token}`
+              }
+            }
+          );
+
+          if (!res.ok) {
+            const err = await res.json();
+
+            // 🔐 user mencoba hapus komentar orang lain
+            if (res.status === 403) {
+              alert("Anda tidak berhak menghapus komentar ini!");
+              return;
+            }
+
+            throw new Error(err.error || "Gagal menghapus komentar");
+          }
+
+          const result = await res.json();
+
+          // 🔄 render ulang komentar setelah hapus
+          komentarState = result.data;
+          renderKomentar(komentarState);
+
+        } catch (err) {
+          console.error("Error hapus komentar:", err);
+          alert(err.message);
+        }
       }
 
       // Fungsi untuk mengatur tampilan user actions

@@ -46,6 +46,9 @@
               </div>
 
               <span class="status-badge status-available">Tersedia</span>
+
+              <button class="btn-chat" onclick="openChatAsGuide('6944129693e072013b2ef0df', 'Nama Lengkap Floren')">Chat</button>
+
             </div>
           </div>
 
@@ -317,6 +320,22 @@
         }
       });
 
+      function openChatAsGuide(userId, userName) {
+        if (!userId) {
+            alert("User tidak valid");
+            return;
+          }
+
+          const confirmChat = confirm(
+            `Mulai chat dengan ${userName}?`
+          );
+
+          if (!confirmChat) return;
+
+          // Redirect ke chat sebagai GUIDE
+          window.location.href =
+            `../chat.html?with=${userId}&name=${encodeURIComponent(userName)}&role=guide`;
+      }
 
       function logout() {
         localStorage.removeItem("token");

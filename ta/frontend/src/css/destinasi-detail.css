@@ -331,98 +331,181 @@
       }
 
       /* Komentar Section */
-.komentar-section {
-  margin-top: 40px;
-  background: #f8f9fa;
-  padding: 30px;
-  border-radius: 20px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-}
+      .komentar-section {
+        margin-top: 40px;
+        background: #f8f9fa;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      }
 
-.komentar-section h3 {
-  font-size: 1.5rem;
-  color: #2c3e50;
-  margin-bottom: 20px;
-}
+      .komentar-section h3 {
+        font-size: 1.5rem;
+        color: #2c3e50;
+        margin-bottom: 20px;
+      }
 
-/* Form Komentar */
-.komentar-form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 20px;
-}
+      /* Form Komentar */
+      .komentar-form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
 
-.komentar-form textarea {
-  width: 100%;
-  padding: 12px 15px;
-  border-radius: 12px;
-  border: 1px solid #ccc;
-  resize: none;
-  font-size: 1rem;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-}
+      .komentar-form textarea {
+        width: 100%;
+        padding: 12px 15px;
+        border-radius: 12px;
+        border: 1px solid #ccc;
+        resize: none;
+        font-size: 1rem;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
 
-.komentar-form textarea:focus {
-  outline: none;
-  border-color: #3498db;
-  box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
-}
+      .komentar-form textarea:focus {
+        outline: none;
+        border-color: #3498db;
+        box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+      }
 
-.komentar-form button {
-  width: 150px;
-  padding: 10px 15px;
-  background-color: #3498db;
-  color: white;
-  border: none;
-  border-radius: 12px;
-  font-weight: 600;
-  cursor: pointer;
-  align-self: flex-end;
-  transition: background-color 0.3s;
-}
+      .komentar-form button {
+        width: 150px;
+        padding: 10px 15px;
+        background-color: #3498db;
+        color: white;
+        border: none;
+        border-radius: 12px;
+        font-weight: 600;
+        cursor: pointer;
+        align-self: flex-end;
+        transition: background-color 0.3s;
+      }
 
-.komentar-form button:hover {
-  background-color: #2980b9;
-}
+      .komentar-form button:hover {
+        background-color: #2980b9;
+      }
 
-/* Daftar Komentar */
-#daftarKomentar {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
+      /* Daftar Komentar */
+      #daftarKomentar {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
 
-.komentar-item {
-  background: white;
-  padding: 15px 20px;
-  border-radius: 15px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-}
+      .komentar-item {
+        background: white;
+        padding: 15px 20px;
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      }
 
-.komentar-item strong {
-  color: #2c3e50;
-}
+      .komentar-item strong {
+        color: #2c3e50;
+      }
 
-.komentar-item span {
-  color: #7f8c8d;
-  font-size: 0.85rem;
-  margin-left: 8px;
-}
+      .komentar-item span {
+        color: #7f8c8d;
+        font-size: 0.85rem;
+        margin-left: 8px;
+      }
 
-.komentar-item p {
-  margin-top: 5px;
-  color: #333;
-  line-height: 1.6;
-}
+      .komentar-item p {
+        margin-top: 5px;
+        color: #333;
+        line-height: 1.6;
+      }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .komentar-form button {
-    width: 100%;
-  }
-}
+      /* Action komentar (edit & delete) */
+      .komentar-actions {
+        display: flex;
+        gap: 10px;
+        margin-top: 10px;
+      }
 
+      /* Base button */
+      .komentar-actions button {
+        padding: 6px 12px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+        transition: all 0.25s ease;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+
+      /* Edit button */
+      .btn-edit {
+        background-color: rgba(52, 152, 219, 0.12);
+        color: #3498db;
+      }
+
+      .btn-edit:hover {
+        background-color: #3498db;
+        color: #fff;
+      }
+
+      /* Delete button */
+      .btn-delete {
+        background-color: rgba(231, 76, 60, 0.12);
+        color: #e74c3c;
+      }
+
+      .btn-delete:hover {
+        background-color: #e74c3c;
+        color: #fff;
+      }
+
+      .komentar-isi[contenteditable="true"] {
+        outline: none;
+        border: 1px dashed #3498db;
+        padding: 6px 8px;
+        border-radius: 8px;
+        background: #fdfefe;
+      }
+
+      .komentar-actions {
+        margin-top: 8px;
+        display: flex;
+        gap: 8px;
+      }
+
+      .komentar-actions button {
+        padding: 5px 10px;
+        font-size: 0.85rem;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+      }
+
+      .komentar-actions button:first-child {
+        background: #f1c40f;
+        color: #2c3e50;
+      }
+
+      .komentar-actions button:last-child {
+        background: #e74c3c;
+        color: white;
+      }
+
+
+      /* Mobile */
+      @media (max-width: 768px) {
+        .komentar-actions {
+          justify-content: flex-end;
+        }
+      }
+
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .komentar-form button {
+          width: 100%;
+        }
+      }
 
       /* Footer */
       footer {

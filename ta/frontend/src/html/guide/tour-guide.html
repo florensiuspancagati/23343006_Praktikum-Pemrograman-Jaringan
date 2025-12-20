@@ -205,7 +205,6 @@
         throw new Error("User belum login");
       }
 
-      // Data tour guide - HAPUS DATA STATIS & GANTI DENGAN FUNGSI FETCH
       let guideData = []; // Array kosong, akan diisi dari API
 
       // Fungsi untuk mengambil data guide dari backend
@@ -215,7 +214,7 @@
           try {
               console.log("🔄 Mengambil data guide dari API...");
               
-              const response = await fetch('http://localhost:3000/guides/', {
+              const response = await fetch('http://localhost:3000/guides/all', {
                   method: 'GET',
                   headers: {
                       'Authorization': `Bearer ${token}`,
@@ -235,6 +234,7 @@
                   guideData = result.data.map(guide => {
                       return {
                           id: guide._id || guide.userId?._id,
+                          userId: guide.userId?._id,
                           nama: guide.userId?.fullname || guide.fullname || "Nama tidak tersedia",
                           foto: guide.foto ? `http://localhost:3000/images_guide/${guide.foto}` : "https://via.placeholder.com/200x200/3498db/ffffff?text=G",
                           spesialisasi: guide.spesialisasi || "Tour Guide",
@@ -294,9 +294,10 @@
           `;
           grid.appendChild(errorMsg);
       }
-
+      
       // Fungsi untuk menampilkan guide
       function displayGuides(guideList = guideData) {
+        
           const grid = document.getElementById("guideGrid");
           grid.innerHTML = "";
 
@@ -311,36 +312,43 @@
           }
 
           guideList.forEach((guide) => {
+              
               const card = document.createElement("div");
               card.className = "guide-card";
               card.innerHTML = `
-                  <div class="guide-header">
-                      <img src="${guide.foto}" alt="${guide.nama}" class="guide-photo">
-                      <h3 class="guide-name">${guide.nama}</h3>
-                      <div class="guide-specialization">${guide.spesialisasi}</div>
-                      <div class="guide-rating">${guide.rating} (${guide.pengalaman})</div>
-                  </div>
-                  <div class="guide-content">
-                      <div class="guide-info">
-                          <div class="info-item">
-                              <span>📍</span>
-                              <span>Lokasi: ${guide.lokasi}</span>
-                          </div>
-                          <div class="info-item">
-                              <span>💬</span>
-                              <span>Bahasa: ${Array.isArray(guide.bahasa) ? guide.bahasa.join(", ") : guide.bahasa}</span>
-                          </div>
-                      </div>
-                      
-                      <div class="guide-contact">
-                          <div class="contact-number">📞 ${guide.telepon}</div>
-                          <div class="contact-email">✉️ ${guide.email}</div>
-                      </div>
-                      
-                      <div class="guide-actions">
-                          <button class="btn-contact" onclick="hubungiGuide('${guide.telepon}', '${guide.nama}')">Hubungi via WhatsApp</button>
-                      </div>
-                  </div>
+                <div class="guide-header">
+                    <img src="${guide.foto}" alt="${guide.nama}" class="guide-photo">
+                    <h3 class="guide-name">${guide.nama}</h3>
+                    <div class="guide-specialization">${guide.spesialisasi}</div>
+                    <div class="guide-rating">${guide.rating} (${guide.pengalaman})</div>
+                </div>
+                <div class="guide-content">
+                    <div class="guide-info">
+                        <div class="info-item">
+                            <span>📍</span>
+                            <span>Lokasi: ${guide.lokasi}</span>
+                        </div>
+                        <div class="info-item">
+                            <span>💬</span>
+                            <span>Bahasa: ${Array.isArray(guide.bahasa) ? guide.bahasa.join(", ") : guide.bahasa}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="guide-contact">
+                        <div class="contact-number">📞 ${guide.telepon}</div>
+                        <div class="contact-email">✉️ ${guide.email}</div>
+                    </div>
+                    
+                    <div class="guide-actions">
+                      <button class="btn-contact" onclick="hubungiGuide('${guide.telepon}', '${guide.nama}')">
+                        Hubungi via WhatsApp
+                      </button>
+
+                      <button class="btn-chat" onclick="chatGuide('${guide.userId}', '${guide.nama}')">
+                        Chat
+                      </button>
+                    </div>
+                </div>
               `;
               grid.appendChild(card);
           });
@@ -375,7 +383,24 @@
           }
       }
 
-            // Fungsi untuk mengatur tampilan user actions
+      function chatGuide(guideUserId, guideName) {
+        if (!guideUserId) {
+          alert("Guide tidak valid");
+          return;
+        }
+
+        const confirmChat = confirm(
+          `Mulai chat dengan ${guideName}?`
+        );
+
+        if (!confirmChat) return;
+
+        // Redirect ke halaman chat
+        window.location.href = 
+          `../chat.html?with=${guideUserId}&name=${encodeURIComponent(guideName)}&role=user`;
+      }
+
+      // Fungsi untuk mengatur tampilan user actions
       function setupUserActions() {
         const userActions = document.getElementById("userActions");
         const isLoggedIn = localStorage.getItem("isLoggedIn");
