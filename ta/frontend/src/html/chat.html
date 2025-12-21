@@ -164,30 +164,48 @@
     const ids = [currentUserId, otherUserId].sort();
     const roomId = `chat_${ids[0]}_${ids[1]}`;
 
+    // load dhistori chat
+    async function loadChatHistory() {
+      const token = localStorage.getItem("token");
 
-    // JOIN ROOM
-    socket.emit("join_room", roomId);
+      const res = await fetch(
+        `http://localhost:3000/chats/detail?userId=${userId}&guideId=${guideId}`,
+        {
+          headers: {
+            Authorization: "Bearer " + token
+          }
+        }
+      );
 
-    const chatBox = document.getElementById("chatMessages");
-    
-    
-    // TERIMA PESAN
-    socket.on("receive_message", (data) => {
+      const result = await res.json();
+
+      if (!result.success) return;
+
+      result.data.forEach(msg => {
+        renderMessage(msg);
+      });
+
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    function renderMessage(data) {
       const div = document.createElement("div");
       const isOwn = data.senderId === currentUserId;
-      div.className =
-      data.senderId === currentUserId ? "message user" : "message other";
-      
+      div.className = data.senderId === currentUserId ? "message user" : "message other";
+
       div.innerHTML = `
-        <p>${data.message}</p>
+        <p>${data.text}</p>
         <strong class="sender-name">${isOwn ? "Anda" : data.senderName}</strong>;
         <span>${new Date(data.createdAt).toLocaleTimeString()}</span>
       `;
 
       chatBox.appendChild(div);
-      chatBox.scrollTop = chatBox.scrollHeight;
-    });
-
+    }
+    
+    
+    // JOIN ROOM
+    const chatBox = document.getElementById("chatMessages");
+    
     // KIRIM PESAN
     function sendMessage() {
       const senderName = localStorage.getItem("username");
@@ -200,11 +218,24 @@
         senderId: currentUserId,
         senderName,
         receiverId: role === "user" ? guideId : userId,
+        role,
         message
       });
 
       input.value = "";
     }
+    
+    // TERIMA PESAN
+    socket.on("receive_message", (data) => {
+      renderMessage(data);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    });
+
+
+    document.addEventListener("DOMContentLoaded", async () => {
+      await loadChatHistory();
+      socket.emit("join_room", roomId);
+    });
 
   </script>
 </body>

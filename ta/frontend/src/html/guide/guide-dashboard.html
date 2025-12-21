@@ -47,7 +47,9 @@
 
               <span class="status-badge status-available">Tersedia</span>
 
-              <button class="btn-chat" onclick="openChatAsGuide('6944129693e072013b2ef0df', 'Nama Lengkap Floren')">Chat</button>
+             <button class="btn-chat" onclick="toggleChatNav()">
+              Pesan
+            </button>
 
             </div>
           </div>
@@ -79,6 +81,18 @@
             </div>
           </div>
         </div>
+
+        <!-- Inbox Chat -->
+        <div class="management-section">
+          <div class="section-header">
+            <h2 class="section-title">📩 Pesan Masuk</h2>
+          </div>
+
+          <div id="chatInbox" class="chat-inbox">
+            <p>Memuat pesan...</p>
+          </div>
+        </div>
+
 
         <!-- Jadwal Tour Static (TIDAK DIUBAH) -->
         <div class="management-section">
@@ -198,6 +212,7 @@
       </div>
     </footer>
      <script>
+
       let guideId = "";
       let userId = "";
 
@@ -258,12 +273,11 @@
         email.value = g.email;
       }
 
-      document.addEventListener("DOMContentLoaded", loadGuideData);
-
+      
       // Perbaiki form submit handler:
       document.getElementById("profileForm").addEventListener("submit", async (e) => {
         e.preventDefault();
-
+        
         const token = localStorage.getItem("token");
         
         // Gunakan userId, bukan guideId
@@ -276,7 +290,7 @@
         formData.append("fullname", fullname.value);
         formData.append("phone", phone.value);
         formData.append("email", email.value);
-
+        
         // Guide fields - perhatikan nama field
         formData.append("spesialisasi", specialization.value);
         formData.append("pengalaman", experience.value);
@@ -287,7 +301,7 @@
         if (photo.files.length > 0) {
           formData.append("photo", photo.files[0]); 
         }
-
+        
         try {
           // Gunakan userId, bukan guideId
           const res = await fetch(`http://localhost:3000/guides/${userId}`, {
@@ -297,7 +311,7 @@
             },
             body: formData,
           });
-
+          
           let result;
           try {
             result = await res.json();
@@ -307,7 +321,7 @@
             alert("Terjadi error di server saat update profil");
             return;
           }
-
+          
           if (result.success) {
             alert("Profil berhasil diperbarui!");
             loadGuideData();
@@ -319,29 +333,79 @@
           alert("Terjadi error saat request ke server");
         }
       });
+      
+      function toggleChatNav() {
+        const nav = document.getElementById("chatNav");
+        nav.classList.toggle("hidden");
+      }
 
-      function openChatAsGuide(userId, userName) {
-        if (!userId) {
-            alert("User tidak valid");
+      // CHATI LOGIC
+      async function loadChatInbox() {
+        const token = localStorage.getItem("token");
+        if (!token) return;
+
+        try {
+          const res = await fetch("http://localhost:3000/chats/guide", {
+            headers: {
+              Authorization: "Bearer " + token
+            }
+          });
+
+          const result = await res.json();
+          const inbox = document.getElementById("chatInbox");
+
+          if (!result.success || result.data.length === 0) {
+            inbox.innerHTML = "<p>Belum ada pesan masuk</p>";
             return;
           }
 
-          const confirmChat = confirm(
-            `Mulai chat dengan ${userName}?`
-          );
+          inbox.innerHTML = result.data.map(chat => {
+            const lastMsg = chat.messages[chat.messages.length - 1];
 
-          if (!confirmChat) return;
+            return `
+              <div class="chat-item"
+                  onclick="openChatAsGuide('${chat.userId._id}', '${chat.userId.fullname}')">
+                <div class="chat-user">${chat.userId.fullname}</div>
+                <div class="chat-last">
+                  ${lastMsg ? lastMsg.text : "Belum ada pesan"}
+                </div>
+              </div>
+            `;
+          }).join("");
 
-          // Redirect ke chat sebagai GUIDE
-          window.location.href =
-            `../chat.html?with=${userId}&name=${encodeURIComponent(userName)}&role=guide`;
+        } catch (err) {
+          console.error("Gagal load inbox:", err);
+        }
       }
 
+      function openChatAsGuide(userId, userName) {
+        if (!userId) {
+          alert("User tidak valid");
+          return;
+        }
+        
+        const confirmChat = confirm(
+          `Mulai chat dengan ${userName}?`
+        );
+        
+        if (!confirmChat) return;
+        
+        // Redirect ke chat sebagai GUIDE
+        window.location.href =
+        `../chat.html?with=${userId}&name=${encodeURIComponent(userName)}&role=guide`;
+      }
+      
       function logout() {
         localStorage.removeItem("token");
         localStorage.clear();
         window.location.href = "../auth/login.html";
       }
-    </script>
+
+      document.addEventListener("DOMContentLoaded", () => {
+        loadChatInbox();
+        loadGuideData();
+      });
+
+      </script>
   </body>
-</html>
+  </html>

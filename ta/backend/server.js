@@ -24,6 +24,7 @@ const destinasiRoutes = require('./src/routes/destinasiRoute');
 const adminRoutes = require('./src/routes/adminRoute');
 const riwayatRoutes = require('./src/routes/riwayatRoute');
 const guideRoutes = require('./src/routes/guideRoute');
+const chatRoutes = require('./src/routes/chatRoute');
 const cookieParser = require('cookie-parser');
 
 app.use(cors({
@@ -57,6 +58,9 @@ app.get('/admin/data', verifyAdmin, (req, res) => {
   res.json({ message: "Protected admin route: access granted" });
 });
 
+// chat
+app.use('/chats', chatRoutes);
+
 // main route
 app.get('/', (req, res) => {
   res.send('Backend for SUMTOUR is running!');
@@ -64,4 +68,4 @@ app.get('/', (req, res) => {
 
 server.listen(port, () => {
     console.log(`Server + Socket is running on: http://localhost:${port}`);
-});
+}); 

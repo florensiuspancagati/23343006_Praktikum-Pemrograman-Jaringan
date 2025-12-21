@@ -12,6 +12,10 @@ const messageSchema = new mongoose.Schema({
     enum: ["user", "guide"],
     required: true
   },
+  senderName: {
+    type: String,
+    required: true
+  },
   text: {
     type: String,
     required: true
@@ -40,3 +44,4 @@ const chatSchema = new mongoose.Schema(
 );
 
 module.exports = mongoose.model("Chat", chatSchema);
+  
