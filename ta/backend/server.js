@@ -1,4 +1,5 @@
 // importing necessary modules
+require("dotenv").config();
 const express = require('express');   // express framework for building web applications
 const cors = require('cors');         // cors to handle cross-origin requests
 const connectDB = require('./src/config/mongodb'); // function to connect to MongoDB
@@ -16,6 +17,7 @@ const io = new Server(server, {
     methods: ["GET", "POST"]
   }
 });
+
 require("./src/socket/chatSocket")(io);
 
 const userRoutes = require('./src/routes/userRoute');
@@ -35,7 +37,6 @@ app.use(express.json());
 app.use(cookieParser());
 
 // connect to mongodb
-require("dotenv").config();
 connectDB();
 
 // routes

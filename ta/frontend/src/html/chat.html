@@ -108,7 +108,7 @@
 
   <!-- Header -->
   <div class="chat-header">
-    <span class="back-btn" onclick="history.back()">Kembali</span>
+    <span class="back-btn" onclick="handleBack()">Kembali</span>
     <div>
       <h3 id="chatWithName">Chat</h3>
       <small id="chatRoleInfo"></small>
@@ -165,6 +165,7 @@
     const roomId = `chat_${ids[0]}_${ids[1]}`;
 
     // load dhistori chat
+    let chatId = null;
     async function loadChatHistory() {
       const token = localStorage.getItem("token");
 
@@ -178,14 +179,21 @@
       );
 
       const result = await res.json();
+      if (!result.success || !result.data) return;
 
-      if (!result.success) return;
+      chatId = result.data.chatId;
 
-      result.data.forEach(msg => {
-        renderMessage(msg);
+      result.data.messages.forEach(msg => {
+        renderMessage({
+          senderId: msg.senderId,
+          senderName: msg.senderName,
+          message: msg.text,
+          createdAt: msg.createdAt
+        });
       });
 
       chatBox.scrollTop = chatBox.scrollHeight;
+      console.log("Chat history loaded: ", chatId);
     }
 
     function renderMessage(data) {
@@ -230,6 +238,39 @@
       renderMessage(data);
       chatBox.scrollTop = chatBox.scrollHeight;
     });
+
+    // HANDLE BACK BUTTON (email)
+    let recapSent = false;
+
+    async function handleBack() {
+      const exit = confirm("Akhiri chat dan kirim rekap via email?");
+      if(!exit) return;
+
+      if (recapSent) {
+        history.back();
+        return;
+      }
+
+      try {
+        const token = localStorage.getItem("token");
+
+        await fetch(`http://localhost:3000/chats/${chatId}/send-recap`, {
+          method: "POST",
+          headers: {
+            Authorization: "Bearer " + token
+          }
+        });
+
+        recapSent = true;
+        console.log("📩 Email rekap terkirim");
+
+      } catch (err) {
+        console.error("❌ Gagal kirim email rekap", err);
+      }
+
+      history.back();
+    }
+
 
 
     document.addEventListener("DOMContentLoaded", async () => {
