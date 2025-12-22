@@ -184,12 +184,7 @@
       chatId = result.data.chatId;
 
       result.data.messages.forEach(msg => {
-        renderMessage({
-          senderId: msg.senderId,
-          senderName: msg.senderName,
-          message: msg.text,
-          createdAt: msg.createdAt
-        });
+        renderMessage(msg);
       });
 
       chatBox.scrollTop = chatBox.scrollHeight;

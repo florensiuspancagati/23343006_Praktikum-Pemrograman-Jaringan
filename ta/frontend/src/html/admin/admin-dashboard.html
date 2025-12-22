@@ -256,7 +256,7 @@
       // Load daftar guide
       async function loadGuides(keyword = "") {
         try {
-          let url = "http://localhost:3000/guides/";
+          let url = "http://localhost:3000/guides/all";
           if (keyword) url += `?search=${encodeURIComponent(keyword)}`;
 
           const res = await fetch(url, {
